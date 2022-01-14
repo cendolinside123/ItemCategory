@@ -11,6 +11,7 @@
 		040941C72791464D000C37E4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941C62791464D000C37E4 /* Product.swift */; };
 		040941CC279171D6000C37E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941CB279171D6000C37E4 /* HomeViewController.swift */; };
 		040941D02791A041000C37E4 /* DefaultNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941CF2791A041000C37E4 /* DefaultNavBar.swift */; };
+		040941D42791C038000C37E4 /* StageNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941D32791C038000C37E4 /* StageNetworkProvider.swift */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
 		813BAED62554E3220083B711 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED52554E3220083B711 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		040941C62791464D000C37E4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		040941CB279171D6000C37E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		040941CF2791A041000C37E4 /* DefaultNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavBar.swift; sourceTree = "<group>"; };
+		040941D32791C038000C37E4 /* StageNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageNetworkProvider.swift; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813BAED12554E3220083B711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		813BAED32554E3220083B711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		040941C82791629C000C37E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				040941D12791BFEE000C37E4 /* AllStage */,
 				040941C9279162A8000C37E4 /* Home */,
 			);
 			path = Controller;
@@ -122,6 +125,22 @@
 				040941CF2791A041000C37E4 /* DefaultNavBar.swift */,
 			);
 			path = NavBar;
+			sourceTree = "<group>";
+		};
+		040941D12791BFEE000C37E4 /* AllStage */ = {
+			isa = PBXGroup;
+			children = (
+				040941D22791BFFB000C37E4 /* StageUseCase */,
+			);
+			path = AllStage;
+			sourceTree = "<group>";
+		};
+		040941D22791BFFB000C37E4 /* StageUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				040941D32791C038000C37E4 /* StageNetworkProvider.swift */,
+			);
+			path = StageUseCase;
 			sourceTree = "<group>";
 		};
 		813BAEC52554E3220083B711 = {
@@ -277,6 +296,7 @@
 				040941C72791464D000C37E4 /* Product.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
 				040941C427913023000C37E4 /* NetworkResult.swift in Sources */,
+				040941D42791C038000C37E4 /* StageNetworkProvider.swift in Sources */,
 				040941CC279171D6000C37E4 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
