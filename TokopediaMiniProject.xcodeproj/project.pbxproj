@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		040941C427913023000C37E4 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941C327913023000C37E4 /* NetworkResult.swift */; };
 		040941C72791464D000C37E4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941C62791464D000C37E4 /* Product.swift */; };
+		040941CC279171D6000C37E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941CB279171D6000C37E4 /* HomeViewController.swift */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
 		813BAED62554E3220083B711 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED52554E3220083B711 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		040941C327913023000C37E4 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		040941C62791464D000C37E4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		040941CB279171D6000C37E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813BAED12554E3220083B711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		813BAED32554E3220083B711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,30 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		040941C82791629C000C37E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				040941C9279162A8000C37E4 /* Home */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		040941C9279162A8000C37E4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				040941CA279171BF000C37E4 /* ViewController */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		040941CA279171BF000C37E4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				040941CB279171D6000C37E4 /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		813BAEC52554E3220083B711 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +127,7 @@
 		813BAED02554E3220083B711 /* TokopediaMiniProject */ = {
 			isa = PBXGroup;
 			children = (
+				040941C82791629C000C37E4 /* Controller */,
 				040941C52791460E000C37E4 /* Model */,
 				040941C22791300F000C37E4 /* Helper */,
 				813BAED12554E3220083B711 /* AppDelegate.swift */,
@@ -230,6 +257,7 @@
 				040941C72791464D000C37E4 /* Product.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
 				040941C427913023000C37E4 /* NetworkResult.swift in Sources */,
+				040941CC279171D6000C37E4 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,12 +421,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H9Y26B6GZB;
 				INFOPLIST_FILE = TokopediaMiniProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokopedia.TokopediaMiniProject;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tokopedia.TokopediaMiniProject-jan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,12 +440,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H9Y26B6GZB;
 				INFOPLIST_FILE = TokopediaMiniProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokopedia.TokopediaMiniProject;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tokopedia.TokopediaMiniProject-jan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
