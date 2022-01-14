@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040941C427913023000C37E4 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941C327913023000C37E4 /* NetworkResult.swift */; };
+		040941C72791464D000C37E4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941C62791464D000C37E4 /* Product.swift */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
 		813BAED62554E3220083B711 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED52554E3220083B711 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		040941C327913023000C37E4 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		040941C62791464D000C37E4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813BAED12554E3220083B711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		813BAED32554E3220083B711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		040941C52791460E000C37E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				040941C62791464D000C37E4 /* Product.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		813BAEC52554E3220083B711 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		813BAED02554E3220083B711 /* TokopediaMiniProject */ = {
 			isa = PBXGroup;
 			children = (
+				040941C52791460E000C37E4 /* Model */,
 				040941C22791300F000C37E4 /* Helper */,
 				813BAED12554E3220083B711 /* AppDelegate.swift */,
 				813BAED32554E3220083B711 /* SceneDelegate.swift */,
@@ -216,6 +227,7 @@
 			files = (
 				813BAED62554E3220083B711 /* ViewController.swift in Sources */,
 				813BAED22554E3220083B711 /* AppDelegate.swift in Sources */,
+				040941C72791464D000C37E4 /* Product.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
 				040941C427913023000C37E4 /* NetworkResult.swift in Sources */,
 			);
