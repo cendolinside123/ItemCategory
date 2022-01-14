@@ -18,7 +18,7 @@ extension SpecialStageUseCase: StageNetworkProvider {
     
     func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
         
-        AF.request("https://hades.tokopedia.com/category/v1/tree/all", method: .get, parameters: Optional<String>.none, encoder: URLEncodedFormParameterEncoder.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON(completionHandler:  { response in
+        AF.request(Constant.APIProduct, method: .get, parameters: Optional<String>.none, encoder: URLEncodedFormParameterEncoder.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON(completionHandler:  { response in
             switch response.result {
             case .success(let data):
                 let getJSON = JSON(data)
