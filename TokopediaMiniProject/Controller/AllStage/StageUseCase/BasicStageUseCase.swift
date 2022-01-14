@@ -14,17 +14,25 @@ struct BasicStageUseCase {
 }
 
 extension BasicStageUseCase: StageNetworkProvider {
-    func fetchProduct(completion: @escaping (NetworkResult<Product>) -> Void) {
+    func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
         
         
-        guard let url = Bundle.main.path(forResource: "ProductData", ofType: "json") else {
-//          completion(.failed("URL Not found"))
+        guard let url = Bundle.main.path(forResource: "data", ofType: "json") else {
+            completion(.failed(NetworkError.loadFailed))
           return
         }
         
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: url), options: .mappedIfSafe)
             let getJSON = JSON(data)
+            
+            var getListProduct: [Product] = []
+            
+            for product in getJSON["categoryAllList"]["categories"].arrayValue {
+                getListProduct.append(Product(json: product))
+            }
+            completion(.success(getListProduct))
+            
         } catch let error {
             completion(.failed(error))
         }

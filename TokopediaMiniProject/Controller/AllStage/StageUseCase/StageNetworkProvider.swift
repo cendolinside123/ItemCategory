@@ -9,5 +9,5 @@ import Foundation
 
 
 protocol StageNetworkProvider {
-    func fetchProduct(completion: @escaping (NetworkResult<Product>) -> Void)
+    func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void)
 }
