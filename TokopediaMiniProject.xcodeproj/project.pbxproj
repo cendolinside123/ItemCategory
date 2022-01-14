@@ -7,15 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040941C427913023000C37E4 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941C327913023000C37E4 /* NetworkResult.swift */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
 		813BAED62554E3220083B711 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED52554E3220083B711 /* ViewController.swift */; };
 		813BAED92554E3220083B711 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813BAED72554E3220083B711 /* Main.storyboard */; };
 		813BAEDB2554E3250083B711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 813BAEDA2554E3250083B711 /* Assets.xcassets */; };
 		813BAEDE2554E3250083B711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813BAEDC2554E3250083B711 /* LaunchScreen.storyboard */; };
+		81B7DDC425CB989700C57C74 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 81B7DDC325CB989700C57C74 /* data.json */; };
+		81ED4455255826BE005EA87F /* TokopediaMiniProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ED4454255826BE005EA87F /* TokopediaMiniProjectTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		81ED4457255826BF005EA87F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 813BAEC62554E3220083B711 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 813BAECD2554E3220083B711;
+			remoteInfo = TokopediaMiniProject;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		040941C327913023000C37E4 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813BAED12554E3220083B711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		813BAED32554E3220083B711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +38,10 @@
 		813BAEDA2554E3250083B711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		813BAEDD2554E3250083B711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		813BAEDF2554E3250083B711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81B7DDC325CB989700C57C74 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		81ED4452255826BE005EA87F /* TokopediaMiniProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokopediaMiniProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81ED4454255826BE005EA87F /* TokopediaMiniProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokopediaMiniProjectTests.swift; sourceTree = "<group>"; };
+		81ED4456255826BF005EA87F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,13 +52,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		81ED444F255826BE005EA87F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040941C22791300F000C37E4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				040941C327913023000C37E4 /* NetworkResult.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		813BAEC52554E3220083B711 = {
 			isa = PBXGroup;
 			children = (
 				813BAED02554E3220083B711 /* TokopediaMiniProject */,
+				81ED4453255826BE005EA87F /* TokopediaMiniProjectTests */,
 				813BAECF2554E3220083B711 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				813BAECE2554E3220083B711 /* TokopediaMiniProject.app */,
+				81ED4452255826BE005EA87F /* TokopediaMiniProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +91,7 @@
 		813BAED02554E3220083B711 /* TokopediaMiniProject */ = {
 			isa = PBXGroup;
 			children = (
+				040941C22791300F000C37E4 /* Helper */,
 				813BAED12554E3220083B711 /* AppDelegate.swift */,
 				813BAED32554E3220083B711 /* SceneDelegate.swift */,
 				813BAED52554E3220083B711 /* ViewController.swift */,
@@ -63,8 +99,18 @@
 				813BAEDA2554E3250083B711 /* Assets.xcassets */,
 				813BAEDC2554E3250083B711 /* LaunchScreen.storyboard */,
 				813BAEDF2554E3250083B711 /* Info.plist */,
+				81B7DDC325CB989700C57C74 /* data.json */,
 			);
 			path = TokopediaMiniProject;
+			sourceTree = "<group>";
+		};
+		81ED4453255826BE005EA87F /* TokopediaMiniProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				81ED4454255826BE005EA87F /* TokopediaMiniProjectTests.swift */,
+				81ED4456255826BF005EA87F /* Info.plist */,
+			);
+			path = TokopediaMiniProjectTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +133,24 @@
 			productReference = 813BAECE2554E3220083B711 /* TokopediaMiniProject.app */;
 			productType = "com.apple.product-type.application";
 		};
+		81ED4451255826BE005EA87F /* TokopediaMiniProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81ED4459255826BF005EA87F /* Build configuration list for PBXNativeTarget "TokopediaMiniProjectTests" */;
+			buildPhases = (
+				81ED444E255826BE005EA87F /* Sources */,
+				81ED444F255826BE005EA87F /* Frameworks */,
+				81ED4450255826BE005EA87F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81ED4458255826BF005EA87F /* PBXTargetDependency */,
+			);
+			name = TokopediaMiniProjectTests;
+			productName = TokopediaMiniProjectTests;
+			productReference = 81ED4452255826BE005EA87F /* TokopediaMiniProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,6 +162,10 @@
 				TargetAttributes = {
 					813BAECD2554E3220083B711 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					81ED4451255826BE005EA87F = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 813BAECD2554E3220083B711;
 					};
 				};
 			};
@@ -115,6 +183,7 @@
 			projectRoot = "";
 			targets = (
 				813BAECD2554E3220083B711 /* TokopediaMiniProject */,
+				81ED4451255826BE005EA87F /* TokopediaMiniProjectTests */,
 			);
 		};
 /* End PBXProject section */
@@ -127,6 +196,14 @@
 				813BAEDE2554E3250083B711 /* LaunchScreen.storyboard in Resources */,
 				813BAEDB2554E3250083B711 /* Assets.xcassets in Resources */,
 				813BAED92554E3220083B711 /* Main.storyboard in Resources */,
+				81B7DDC425CB989700C57C74 /* data.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81ED4450255826BE005EA87F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,10 +217,27 @@
 				813BAED62554E3220083B711 /* ViewController.swift in Sources */,
 				813BAED22554E3220083B711 /* AppDelegate.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
+				040941C427913023000C37E4 /* NetworkResult.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81ED444E255826BE005EA87F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81ED4455255826BE005EA87F /* TokopediaMiniProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81ED4458255826BF005EA87F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 813BAECD2554E3220083B711 /* TokopediaMiniProject */;
+			targetProxy = 81ED4457255826BF005EA87F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		813BAED72554E3220083B711 /* Main.storyboard */ = {
@@ -317,6 +411,44 @@
 			};
 			name = Release;
 		};
+		81ED445A255826BF005EA87F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TokopediaMiniProjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokopedia.TokopediaMiniProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TokopediaMiniProject.app/TokopediaMiniProject";
+			};
+			name = Debug;
+		};
+		81ED445B255826BF005EA87F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TokopediaMiniProjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokopedia.TokopediaMiniProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TokopediaMiniProject.app/TokopediaMiniProject";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +466,15 @@
 			buildConfigurations = (
 				813BAEE32554E3250083B711 /* Debug */,
 				813BAEE42554E3250083B711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81ED4459255826BF005EA87F /* Build configuration list for PBXNativeTarget "TokopediaMiniProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81ED445A255826BF005EA87F /* Debug */,
+				81ED445B255826BF005EA87F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

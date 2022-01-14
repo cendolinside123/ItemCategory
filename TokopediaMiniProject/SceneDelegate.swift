@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  TokopediaMiniProject
 //
-//  Created by Andrey Yoshua on 06/11/20.
+//  Created by Nakama on 06/11/20.
 //
 
 import UIKit
