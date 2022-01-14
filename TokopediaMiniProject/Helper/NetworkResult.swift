@@ -11,3 +11,7 @@ enum NetworkResult<T> {
     case success(T)
     case failed(Error)
 }
+
+enum NetworkError: Error {
+    case loadFailed
+}
