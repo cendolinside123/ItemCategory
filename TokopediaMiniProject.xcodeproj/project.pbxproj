@@ -14,6 +14,7 @@
 		040941D42791C038000C37E4 /* StageNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941D32791C038000C37E4 /* StageNetworkProvider.swift */; };
 		040941D62791C330000C37E4 /* BasicStageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941D52791C330000C37E4 /* BasicStageUseCase.swift */; };
 		040941D82791CC23000C37E4 /* SpecialStageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941D72791CC23000C37E4 /* SpecialStageUseCase.swift */; };
+		040941DA2791D223000C37E4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941D92791D223000C37E4 /* Constant.swift */; };
 		3ABBB793CB23D9F865906AE1 /* Pods_TokopediaMiniProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 		040941D32791C038000C37E4 /* StageNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageNetworkProvider.swift; sourceTree = "<group>"; };
 		040941D52791C330000C37E4 /* BasicStageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStageUseCase.swift; sourceTree = "<group>"; };
 		040941D72791CC23000C37E4 /* SpecialStageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialStageUseCase.swift; sourceTree = "<group>"; };
+		040941D92791D223000C37E4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokopediaMiniProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F91DC1C28E64A6C1688C05 /* Pods-TokopediaMiniProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokopediaMiniProject.release.xcconfig"; path = "Target Support Files/Pods-TokopediaMiniProject/Pods-TokopediaMiniProject.release.xcconfig"; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				040941C327913023000C37E4 /* NetworkResult.swift */,
+				040941D92791D223000C37E4 /* Constant.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				040941C72791464D000C37E4 /* Product.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
 				040941C427913023000C37E4 /* NetworkResult.swift in Sources */,
+				040941DA2791D223000C37E4 /* Constant.swift in Sources */,
 				040941D42791C038000C37E4 /* StageNetworkProvider.swift in Sources */,
 				040941CC279171D6000C37E4 /* HomeViewController.swift in Sources */,
 			);
