@@ -39,3 +39,17 @@ extension Product {
         
     }
 }
+
+extension Product: Equatable {
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.name == rhs.name &&
+        lhs.identifier == rhs.identifier &&
+        lhs.url == rhs.url &&
+        lhs.iconImageUrl == rhs.iconImageUrl &&
+        lhs.parentName == rhs.parentName &&
+        lhs.applinks == rhs.applinks &&
+        lhs.iconBannerURL == rhs.iconBannerURL &&
+        lhs.child == rhs.child
+    }
+}
