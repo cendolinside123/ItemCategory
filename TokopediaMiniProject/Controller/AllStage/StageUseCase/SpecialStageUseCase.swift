@@ -17,22 +17,27 @@ extension SpecialStageUseCase: StageNetworkProvider {
     
     
     func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
-        
-        AF.request(Constant.APIProduct, method: .get, parameters: Optional<String>.none, encoder: URLEncodedFormParameterEncoder.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON(completionHandler:  { response in
-            switch response.result {
-            case .success(let data):
-                let getJSON = JSON(data)
-                
-                var getListProduct: [Product] = []
-                
-                for product in getJSON["categoryAllList"]["categories"].arrayValue {
-                    getListProduct.append(Product(json: product))
+        DispatchQueue.global().async {
+            AF.request(Constant.APIProduct, method: .get, parameters: Optional<String>.none, encoder: URLEncodedFormParameterEncoder.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON(completionHandler:  { response in
+                switch response.result {
+                case .success(let data):
+                    let getJSON = JSON(data)
+                    
+                    var getListProduct: [Product] = []
+                    
+                    for product in getJSON["categoryAllList"]["categories"].arrayValue {
+                        getListProduct.append(Product(json: product))
+                    }
+                    DispatchQueue.main.async {
+                        completion(.success(getListProduct))
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        completion(.failed(error))
+                    }
                 }
-                completion(.success(getListProduct))
-            case .failure(let error):
-                completion(.failed(error))
-            }
-        })
+            })
+        }
     }
     
     
