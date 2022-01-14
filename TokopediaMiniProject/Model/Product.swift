@@ -18,10 +18,11 @@ struct Product {
     let applinks: String
     let iconBannerURL: String
     let child: [Product]
+    let level: Int
 }
 
 extension Product {
-    init(json: JSON) {
+    init(json: JSON, level: Int = 0) {
         id = json["id"].stringValue
         name = json["name"].stringValue
         identifier = json["identifier"].stringValue
@@ -30,10 +31,10 @@ extension Product {
         parentName = json["parentName"].stringValue
         applinks = json["applinks"].stringValue
         iconBannerURL = json["iconBannerURL"].stringValue
-        
+        self.level = level
         var childProduct = [Product]()
         for product in json["child"].arrayValue {
-            childProduct.append(Product(json: product))
+            childProduct.append(Product(json: product, level: level + 1))
         }
         child = childProduct
         
