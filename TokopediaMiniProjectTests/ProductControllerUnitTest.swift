@@ -50,7 +50,7 @@ class ProductControllerUnitTest: XCTestCase {
         wait(for: [filterExpectation], timeout: 1)
     }
     
-    func dummyFilterCompareData() {
+    func testDummyFilterCompareData() {
         let useCase: StageNetworkProvider = SuccessDataUseCase()
         viewModel = ProductViewModel(useCase: useCase)
         let loadExpectation = expectation(description: "should return product data")
@@ -74,7 +74,7 @@ class ProductControllerUnitTest: XCTestCase {
         wait(for: [filterExpectation], timeout: 1)
     }
     
-    func basicFilterCompareData() {
+    func testBasicFilterCompareData() {
         let useCase: StageNetworkProvider = BasicStageUseCase()
         viewModel = ProductViewModel(useCase: useCase)
         let loadExpectation = expectation(description: "should return product data")
