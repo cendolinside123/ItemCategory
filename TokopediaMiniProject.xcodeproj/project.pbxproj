@@ -16,6 +16,7 @@
 		040941D82791CC23000C37E4 /* SpecialStageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941D72791CC23000C37E4 /* SpecialStageUseCase.swift */; };
 		040941DA2791D223000C37E4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941D92791D223000C37E4 /* Constant.swift */; };
 		040941DD2791D5E3000C37E4 /* ProductVMGuideline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941DC2791D5E3000C37E4 /* ProductVMGuideline.swift */; };
+		0474402D2792E4A000AF1421 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474402C2792E4A000AF1421 /* ProductViewModel.swift */; };
 		3ABBB793CB23D9F865906AE1 /* Pods_TokopediaMiniProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
@@ -48,6 +49,7 @@
 		040941D72791CC23000C37E4 /* SpecialStageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialStageUseCase.swift; sourceTree = "<group>"; };
 		040941D92791D223000C37E4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		040941DC2791D5E3000C37E4 /* ProductVMGuideline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVMGuideline.swift; sourceTree = "<group>"; };
+		0474402C2792E4A000AF1421 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokopediaMiniProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F91DC1C28E64A6C1688C05 /* Pods-TokopediaMiniProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokopediaMiniProject.release.xcconfig"; path = "Target Support Files/Pods-TokopediaMiniProject/Pods-TokopediaMiniProject.release.xcconfig"; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				040941DC2791D5E3000C37E4 /* ProductVMGuideline.swift */,
+				0474402C2792E4A000AF1421 /* ProductViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				040941D02791A041000C37E4 /* DefaultNavBar.swift in Sources */,
 				040941D62791C330000C37E4 /* BasicStageUseCase.swift in Sources */,
 				813BAED62554E3220083B711 /* ViewController.swift in Sources */,
+				0474402D2792E4A000AF1421 /* ProductViewModel.swift in Sources */,
 				813BAED22554E3220083B711 /* AppDelegate.swift in Sources */,
 				040941C72791464D000C37E4 /* Product.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
