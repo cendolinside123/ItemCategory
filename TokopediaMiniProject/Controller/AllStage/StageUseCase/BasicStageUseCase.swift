@@ -28,7 +28,7 @@ extension BasicStageUseCase: StageNetworkProvider {
             
             var getListProduct: [Product] = []
             
-            for product in getJSON["categoryAllList"]["categories"].arrayValue {
+            for product in getJSON["data"]["categoryAllList"]["categories"].arrayValue {
                 getListProduct.append(Product(json: product))
             }
             completion(.success(getListProduct))
