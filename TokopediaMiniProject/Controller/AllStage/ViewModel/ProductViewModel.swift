@@ -32,7 +32,7 @@ extension ProductViewModel {
             let getChild: [Product] = self.filterProduct(keyWord: keyWord, listProduct: product.child)
             
             if product.name.contains(keyWord) || getChild.count > 0 {
-                getResult.append(Product(id: product.id, name: product.name, identifier: product.identifier, url: product.url, iconImageUrl: product.iconImageUrl, parentName: product.parentName, applinks: product.applinks, iconBannerURL: product.iconImageUrl, child: getChild, level: product.level))
+                getResult.append(Product(id: product.id, name: product.name, identifier: product.identifier, url: product.url, iconImageUrl: product.iconImageUrl, parentName: product.parentName, applinks: product.applinks, iconBannerURL: product.iconBannerURL, child: getChild, level: product.level))
             }
             
         }
