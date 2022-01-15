@@ -18,6 +18,7 @@
 		040941DD2791D5E3000C37E4 /* ProductVMGuideline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040941DC2791D5E3000C37E4 /* ProductVMGuideline.swift */; };
 		0474402D2792E4A000AF1421 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474402C2792E4A000AF1421 /* ProductViewModel.swift */; };
 		0474402F279302CA00AF1421 /* ProductControllerUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474402E279302CA00AF1421 /* ProductControllerUnitTest.swift */; };
+		047440312793108F00AF1421 /* MockingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047440302793108F00AF1421 /* MockingData.swift */; };
 		3ABBB793CB23D9F865906AE1 /* Pods_TokopediaMiniProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
@@ -52,6 +53,7 @@
 		040941DC2791D5E3000C37E4 /* ProductVMGuideline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVMGuideline.swift; sourceTree = "<group>"; };
 		0474402C2792E4A000AF1421 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		0474402E279302CA00AF1421 /* ProductControllerUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductControllerUnitTest.swift; sourceTree = "<group>"; };
+		047440302793108F00AF1421 /* MockingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockingData.swift; sourceTree = "<group>"; };
 		37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokopediaMiniProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F91DC1C28E64A6C1688C05 /* Pods-TokopediaMiniProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokopediaMiniProject.release.xcconfig"; path = "Target Support Files/Pods-TokopediaMiniProject/Pods-TokopediaMiniProject.release.xcconfig"; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +234,7 @@
 				81ED4454255826BE005EA87F /* TokopediaMiniProjectTests.swift */,
 				81ED4456255826BF005EA87F /* Info.plist */,
 				0474402E279302CA00AF1421 /* ProductControllerUnitTest.swift */,
+				047440302793108F00AF1421 /* MockingData.swift */,
 			);
 			path = TokopediaMiniProjectTests;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81ED4455255826BE005EA87F /* TokopediaMiniProjectTests.swift in Sources */,
+				047440312793108F00AF1421 /* MockingData.swift in Sources */,
 				0474402F279302CA00AF1421 /* ProductControllerUnitTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
