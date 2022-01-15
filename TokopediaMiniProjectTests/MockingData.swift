@@ -76,3 +76,14 @@ struct MockData {
         return listProduct
     }
 }
+
+struct SuccessDataUseCase {
+    
+}
+extension SuccessDataUseCase: StageNetworkProvider {
+    func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
+        completion(.success(MockData.getListProduct()))
+    }
+    
+    
+}
