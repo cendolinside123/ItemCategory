@@ -50,4 +50,28 @@ class ProductControllerUnitTest: XCTestCase {
         wait(for: [filterExpectation], timeout: 1)
     }
     
+    func dummyFilterCompareData() {
+        let useCase: StageNetworkProvider = SuccessDataUseCase()
+        viewModel = ProductViewModel(useCase: useCase)
+        let loadExpectation = expectation(description: "should return product data")
+        let filterExpectation = expectation(description: "filtered product data sould same")
+        let expectedResult = MockData.getListDapurProduct()
+        
+        viewModel?.productResult = { result in
+            XCTAssertGreaterThan(result.count, 0)
+            loadExpectation.fulfill()
+        }
+        
+        viewModel?.filterResult = { filteredResult in
+            XCTAssertGreaterThan(filteredResult.count, 0)
+            XCTAssertEqual(filteredResult, expectedResult)
+            filterExpectation.fulfill()
+        }
+        
+        viewModel?.loadProduct(reloadTime: 3)
+        wait(for: [loadExpectation], timeout: 1)
+        viewModel?.searchProduct(keyword: "Dapur")
+        wait(for: [filterExpectation], timeout: 1)
+    }
+    
 }
