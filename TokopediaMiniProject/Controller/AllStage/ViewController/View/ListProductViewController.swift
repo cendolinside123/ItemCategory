@@ -94,6 +94,14 @@ extension ListProductViewController {
     func vcWorkType(type: VCType) {
         self.typeViewController = type
     }
+    
+    func getLoadingView() -> UIView {
+        return loadingView
+    }
+    
+    func getLoadingSpinner() -> UIActivityIndicatorView {
+        return loadingSpinner
+    }
 }
 extension ListProductViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
