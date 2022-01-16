@@ -20,6 +20,7 @@
 		0474402F279302CA00AF1421 /* ProductControllerUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474402E279302CA00AF1421 /* ProductControllerUnitTest.swift */; };
 		047440312793108F00AF1421 /* MockingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047440302793108F00AF1421 /* MockingData.swift */; };
 		0488BEEC2793BE8D00A3FA9B /* SetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */; };
+		0488BEEF2793C01700A3FA9B /* ListProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */; };
 		3ABBB793CB23D9F865906AE1 /* Pods_TokopediaMiniProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
@@ -56,6 +57,7 @@
 		0474402E279302CA00AF1421 /* ProductControllerUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductControllerUnitTest.swift; sourceTree = "<group>"; };
 		047440302793108F00AF1421 /* MockingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockingData.swift; sourceTree = "<group>"; };
 		0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupUI.swift; sourceTree = "<group>"; };
+		0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductViewController.swift; sourceTree = "<group>"; };
 		37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokopediaMiniProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F91DC1C28E64A6C1688C05 /* Pods-TokopediaMiniProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokopediaMiniProject.release.xcconfig"; path = "Target Support Files/Pods-TokopediaMiniProject/Pods-TokopediaMiniProject.release.xcconfig"; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,9 +188,18 @@
 		0488BEEA2793BE7100A3FA9B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0488BEED2793BFF000A3FA9B /* View */,
 				0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0488BEED2793BFF000A3FA9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3FF0D5C622ABE3DF8C917C6D /* Frameworks */ = {
@@ -441,6 +452,7 @@
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
 				040941C427913023000C37E4 /* NetworkResult.swift in Sources */,
 				040941DA2791D223000C37E4 /* Constant.swift in Sources */,
+				0488BEEF2793C01700A3FA9B /* ListProductViewController.swift in Sources */,
 				040941D42791C038000C37E4 /* StageNetworkProvider.swift in Sources */,
 				040941CC279171D6000C37E4 /* HomeViewController.swift in Sources */,
 			);
