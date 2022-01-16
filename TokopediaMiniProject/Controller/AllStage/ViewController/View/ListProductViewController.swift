@@ -108,9 +108,9 @@ class ListProductViewController: UIViewController {
     
 }
 extension ListProductViewController {
-    func vcWorkType(type: VCType) {
-        self.typeViewController = type
-    }
+//    func vcWorkType(type: VCType) {
+//        self.typeViewController = type
+//    }
     
     func getLoadingView() -> UIView {
         return loadingView
