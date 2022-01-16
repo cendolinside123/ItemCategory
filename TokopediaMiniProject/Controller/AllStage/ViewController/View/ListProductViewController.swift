@@ -15,7 +15,7 @@ class ListProductViewController: UIViewController {
     private var typeViewController: VCType?
     private var uiControll: ListUIGuideHelper?
     private var viewModel: ProductVMGuideline?
-    
+    private var searchTask: ((String) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,6 +38,9 @@ class ListProductViewController: UIViewController {
         setLayout()
         setConstraints()
         uiControll = ListProductUIControll(controller: self)
+        bind()
+        runTask()
+        viewModel?.loadProduct(reloadTime: 3)
     }
     
 
@@ -51,6 +54,21 @@ class ListProductViewController: UIViewController {
     }
     */
     
+    
+    private func bind() {
+        viewModel?.filterResult = { [weak self] _ in
+            self?.tableContent.reloadData()
+        }
+        viewModel?.productResult = { [weak self] _ in
+            self?.tableContent.reloadData()
+        }
+    }
+    
+    private func runTask() {
+        self.searchTask = { [weak self] keyWord in
+            self?.viewModel?.searchProduct(keyword: keyWord)
+        }
+    }
     
     private func setLayout() {
         view.backgroundColor = .white
@@ -119,10 +137,15 @@ extension ListProductViewController {
     func getLoadingSpinner() -> UIActivityIndicatorView {
         return loadingSpinner
     }
+    
+    func doSearchProduct(keyWord: String) {
+        self.searchTask?(keyWord)
+    }
+    
 }
 extension ListProductViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel?.result.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
