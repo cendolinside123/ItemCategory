@@ -12,8 +12,8 @@ class ListProductViewController: UIViewController {
     private let loadingSpinner = UIActivityIndicatorView()
     private let loadingView = UIView()
     private let tableContent = UITableView()
-    var typeViewController: VCType?
-    
+    private var typeViewController: VCType?
+    private var uiControll: ListUIGuideHelper?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,7 @@ class ListProductViewController: UIViewController {
         // Do any additional setup after loading the view.
         setLayout()
         setConstraints()
+        uiControll = ListProductUIControll(controller: self)
     }
     
 
