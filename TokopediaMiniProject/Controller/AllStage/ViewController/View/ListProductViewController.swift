@@ -14,6 +14,22 @@ class ListProductViewController: UIViewController {
     private let tableContent = UITableView()
     private var typeViewController: VCType?
     private var uiControll: ListUIGuideHelper?
+    private var viewModel: ProductVMGuideline?
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init(useCase: StageNetworkProvider, type: VCType) {
+        super.init(nibName: nil, bundle: nil)
+        viewModel = ProductViewModel(useCase: useCase)
+        self.typeViewController = type
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
