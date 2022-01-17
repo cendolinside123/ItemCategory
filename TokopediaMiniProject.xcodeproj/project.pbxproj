@@ -25,6 +25,8 @@
 		0488BEF32793CCE000A3FA9B /* ListProductUIControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEF22793CCE000A3FA9B /* ListProductUIControll.swift */; };
 		0488BEF52794026700A3FA9B /* StageTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEF42794026700A3FA9B /* StageTwoViewController.swift */; };
 		0488BEF82794193E00A3FA9B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEF72794193E00A3FA9B /* SearchBar.swift */; };
+		0488BEFD2794383200A3FA9B /* TableViewCellSetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEFC2794383200A3FA9B /* TableViewCellSetupUI.swift */; };
+		0488BF0127943E0B00A3FA9B /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BF0027943E0B00A3FA9B /* ProductTableViewCell.swift */; };
 		3ABBB793CB23D9F865906AE1 /* Pods_TokopediaMiniProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */; };
 		813BAED22554E3220083B711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED12554E3220083B711 /* AppDelegate.swift */; };
 		813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813BAED32554E3220083B711 /* SceneDelegate.swift */; };
@@ -66,6 +68,8 @@
 		0488BEF22793CCE000A3FA9B /* ListProductUIControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductUIControll.swift; sourceTree = "<group>"; };
 		0488BEF42794026700A3FA9B /* StageTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageTwoViewController.swift; sourceTree = "<group>"; };
 		0488BEF72794193E00A3FA9B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		0488BEFC2794383200A3FA9B /* TableViewCellSetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellSetupUI.swift; sourceTree = "<group>"; };
+		0488BF0027943E0B00A3FA9B /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		37449BCA694605A0ACC1C72C /* Pods_TokopediaMiniProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TokopediaMiniProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F91DC1C28E64A6C1688C05 /* Pods-TokopediaMiniProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TokopediaMiniProject.release.xcconfig"; path = "Target Support Files/Pods-TokopediaMiniProject/Pods-TokopediaMiniProject.release.xcconfig"; sourceTree = "<group>"; };
 		813BAECE2554E3220083B711 /* TokopediaMiniProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokopediaMiniProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +156,7 @@
 		040941CD27919FC0000C37E4 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				0488BEFB2794277400A3FA9B /* ProductTableViewCell */,
 				040941CE2791A01B000C37E4 /* NavBar */,
 			);
 			path = CustomUI;
@@ -220,6 +225,15 @@
 				0488BEF72794193E00A3FA9B /* SearchBar.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		0488BEFB2794277400A3FA9B /* ProductTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0488BEFC2794383200A3FA9B /* TableViewCellSetupUI.swift */,
+				0488BF0027943E0B00A3FA9B /* ProductTableViewCell.swift */,
+			);
+			path = ProductTableViewCell;
 			sourceTree = "<group>";
 		};
 		3FF0D5C622ABE3DF8C917C6D /* Frameworks */ = {
@@ -467,6 +481,7 @@
 				813BAED62554E3220083B711 /* ViewController.swift in Sources */,
 				0474402D2792E4A000AF1421 /* ProductViewModel.swift in Sources */,
 				813BAED22554E3220083B711 /* AppDelegate.swift in Sources */,
+				0488BF0127943E0B00A3FA9B /* ProductTableViewCell.swift in Sources */,
 				0488BEEC2793BE8D00A3FA9B /* SetupUI.swift in Sources */,
 				040941C72791464D000C37E4 /* Product.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
@@ -479,6 +494,7 @@
 				040941D42791C038000C37E4 /* StageNetworkProvider.swift in Sources */,
 				0488BEF52794026700A3FA9B /* StageTwoViewController.swift in Sources */,
 				040941CC279171D6000C37E4 /* HomeViewController.swift in Sources */,
+				0488BEFD2794383200A3FA9B /* TableViewCellSetupUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
