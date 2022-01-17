@@ -40,6 +40,7 @@ class DefaultNavBar: UIView {
     private func setup() {
         addLayout()
         addConstraints()
+        setButtonFunctionality()
     }
     
     private func addLayout() {
@@ -76,6 +77,7 @@ class DefaultNavBar: UIView {
         let vTitleLabel = "V:|-[titleLabel]-|"
         constraints += NSLayoutConstraint.constraints(withVisualFormat: vTitleLabel, options: .alignAllCenterX, metrics: metrix, views: views)
         constraints += [NSLayoutConstraint(item: titleLabel, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: 3/9, constant: 0)]
+        constraints += [NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: contentView, attribute: .centerX, multiplier: 1, constant: 0)]
         
         NSLayoutConstraint.activate(constraints)
     }
@@ -98,6 +100,8 @@ class DefaultNavBar: UIView {
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .center
         contentView.addSubview(titleLabel)
     }
     
@@ -117,6 +121,10 @@ extension DefaultNavBar {
     
     func setBorderWidth(width: CGFloat) {
         self.layer.borderWidth = width
+    }
+    
+    func setTitle(title: String) {
+        self.titleLabel.text = title
     }
     
     @objc private func leftButtonTap() {
