@@ -15,7 +15,7 @@ class ListProductViewController: UIViewController {
     private var typeViewController: VCType?
     private var uiControll: ListUIGuideHelper?
     private var viewModel: ProductVMGuideline?
-    private var searchTask: ((String) -> Void)?
+    private var listExpandProduxt: [[String: String]] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,7 +40,6 @@ class ListProductViewController: UIViewController {
         setupTable()
         uiControll = ListProductUIControll(controller: self)
         bind()
-        runTask()
         viewModel?.loadProduct(reloadTime: 3)
     }
     
@@ -58,17 +57,39 @@ class ListProductViewController: UIViewController {
     
     private func bind() {
         viewModel?.filterResult = { [weak self] _ in
+            self?.listExpandProduxt = []
+            if let getResult = self?.viewModel?.result {
+                
+                for getExpanded in getResult {
+                    self?.listExpandProduxt.append(["id": getExpanded.id, "root": getExpanded.root])
+                }
+            }
+            
             self?.tableContent.reloadData()
         }
         viewModel?.productResult = { [weak self] _ in
+            self?.listExpandProduxt = []
             self?.uiControll?.hideLoading(completion: nil)
             self?.tableContent.reloadData()
         }
-    }
-    
-    private func runTask() {
-        self.searchTask = { [weak self] keyWord in
-            self?.viewModel?.searchProduct(keyword: keyWord)
+        viewModel?.toggleResult = { [weak self] editedIndex, updateStatus in
+            var listIndex: [IndexPath] = []
+            if updateStatus == true {
+                listIndex = editedIndex.map({ (getIndex) -> IndexPath in
+                    return IndexPath(row: getIndex, section: 0)
+                })
+                self?.tableContent.beginUpdates()
+                self?.tableContent.insertRows(at: listIndex, with: .automatic)
+                self?.tableContent.endUpdates()
+
+            } else {
+                listIndex = editedIndex.map({ (getIndex) -> IndexPath in
+                    return IndexPath(row: getIndex, section: 0)
+                })
+                self?.tableContent.beginUpdates()
+                self?.tableContent.deleteRows(at: listIndex, with: .automatic)
+                self?.tableContent.endUpdates()
+            }
         }
     }
     
@@ -129,9 +150,6 @@ class ListProductViewController: UIViewController {
     
 }
 extension ListProductViewController {
-//    func vcWorkType(type: VCType) {
-//        self.typeViewController = type
-//    }
     
     func getLoadingView() -> UIView {
         return loadingView
@@ -142,7 +160,7 @@ extension ListProductViewController {
     }
     
     func doSearchProduct(keyWord: String) {
-        self.searchTask?(keyWord)
+        viewModel?.searchProduct(keyword: keyWord)
     }
     
 }
@@ -155,6 +173,7 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
+        cell.selectionStyle = .none
         
         if let getProductInfo = viewModel?.result[indexPath.row] {
             cell.setProductInfo(product: getProductInfo)
@@ -167,5 +186,34 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let getViewModel = self.viewModel {
+            if getViewModel.result[indexPath.row].child.count != 0 {
+                
+                
+                if listExpandProduxt.firstIndex(where: { $0["id"] == getViewModel.result[indexPath.row].id && $0["root"] == getViewModel.result[indexPath.row].root }) == nil {
+                    self.viewModel?.expandProduct(child: getViewModel.result[indexPath.row].child)
+                    listExpandProduxt.append(["id": getViewModel.result[indexPath.row].id, "root": getViewModel.result[indexPath.row].root])
+                } else {
+                    if getViewModel.result[indexPath.row].root != "" {
+                        getViewModel.hideSpesificProduct(child: getViewModel.result[indexPath.row].child)
+                        listExpandProduxt.remove(at: listExpandProduxt.firstIndex(where: { $0["id"] == getViewModel.result[indexPath.row].id && $0["root"] == getViewModel.result[indexPath.row].root })!)
+                    } else {
+                        getViewModel.hideAllProduct(id: getViewModel.result[indexPath.row].id)
+                        listExpandProduxt.removeAll(where: {$0["root"] == getViewModel.result[indexPath.row].id})
+                        listExpandProduxt.remove(at: listExpandProduxt.firstIndex(where: { $0["id"] == getViewModel.result[indexPath.row].id && $0["root"] == "" })!)
+                    }
+                    
+                }
+                
+            } else {
+                print("not reload")
+            }
+            
+        }
+        
+    }
+    
 }
 
