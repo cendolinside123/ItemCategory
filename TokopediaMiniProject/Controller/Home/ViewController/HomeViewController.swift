@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         setLayout()
         setConstraints()
+        setupButton()
     }
     
 
@@ -135,6 +136,16 @@ class HomeViewController: UIViewController {
         contentStackView.addArrangedSubview(thirdStage)
         contentStackView.addArrangedSubview(fourthStage)
         view.addSubview(contentStackView)
+    }
+    
+}
+extension HomeViewController {
+    @objc private func toStageTwo() {
+        let vc = StageTwoViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    private func setupButton() {
+        secondStage.addTarget(self, action: #selector(toStageTwo), for: .touchDown)
     }
     
 }
