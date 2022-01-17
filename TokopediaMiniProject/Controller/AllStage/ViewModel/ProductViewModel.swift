@@ -133,7 +133,6 @@ extension ProductViewModel: ProductVMGuideline {
         if keyword == "" {
             self.result = self.tempProduct
             self.tempProduct = []
-//            self.filterResult?(self.result)
             self.productResult?(self.result)
             return
         }
