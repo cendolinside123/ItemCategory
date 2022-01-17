@@ -40,9 +40,13 @@ class ListProductViewController: UIViewController {
         setupTable()
         uiControll = ListProductUIControll(controller: self)
         bind()
-        viewModel?.loadProduct(reloadTime: 3)
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel?.loadProduct(reloadTime: 3)
+    }
 
     /*
     // MARK: - Navigation
