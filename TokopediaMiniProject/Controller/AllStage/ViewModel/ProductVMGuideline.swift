@@ -15,7 +15,7 @@ protocol ProductVMGuideline {
     func hideSpesificProduct(child: [Product])
     var productResult: (([Product]) -> Void)? { get set }
     var filterResult: (([Product]) -> Void)? { get set }
-    var toggleResult: (([Product], Bool) -> Void)? { get set }
+    var toggleResult: (([Int], Bool) -> Void)? { get set }
     var fetchError: ((Error) -> Void)? { get set }
     var result: [Product] { get set }
 }
