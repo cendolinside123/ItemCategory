@@ -7,7 +7,6 @@
 
 import Foundation
 
-enum CellState {
-    case wrap
-    case spread(Int)
+protocol ProductTableHelper {
+    func doValidation(product: Product)
 }

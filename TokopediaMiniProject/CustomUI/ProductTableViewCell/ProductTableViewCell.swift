@@ -8,6 +8,8 @@
 import UIKit
 
 class ProductTableViewCell: UITableViewCell {
+    private let viewLevelOne = UIView()
+    private let viewLevelTwo = UIView()
     private let lblNamaProduct = UILabel()
     private let lblJumlahChild = UILabel()
     private let lblChild = UILabel()
@@ -34,12 +36,13 @@ class ProductTableViewCell: UITableViewCell {
         return stack
     }()
     
-    private var cellState: CellState = .wrap
     private var listChild: [Product] = []
+    private var uiControll: ProductTableHelper?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
+        uiControll = ProductCellControll(controller: self)
     }
     
     required init?(coder: NSCoder) {
@@ -60,11 +63,11 @@ class ProductTableViewCell: UITableViewCell {
     private func setup() {
         setLayout()
         setConstraints()
-//        setupTable()
     }
     
     private func setLayout() {
         self.backgroundColor = .white
+        viewLevel()
         addNamaProduct()
         addViewChildInfo()
         addJumlahChild()
@@ -73,18 +76,23 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     private func setConstraints() {
-        let views: [String: Any] = ["lblNamaProduct": lblNamaProduct, "viewChildInfo": viewChildInfo, "lblJumlahChild": lblJumlahChild, "lblChild": lblChild, "childInfoStackView": childInfoStackView, "productInfoStackView": productInfoStackView, "contentStackView": contentStackView]
+        let views: [String: Any] = ["viewLevelOne": viewLevelOne, "viewLevelTwo": viewLevelTwo, "lblNamaProduct": lblNamaProduct, "viewChildInfo": viewChildInfo, "lblJumlahChild": lblJumlahChild, "lblChild": lblChild, "childInfoStackView": childInfoStackView, "productInfoStackView": productInfoStackView, "contentStackView": contentStackView]
         let metrix: [String: Any] = [:]
         var constraints = [NSLayoutConstraint]()
         
         //MARK: productInfoStackView constraints
         productInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         let vProductInfoStackViewTblContainer = "V:|-0-[productInfoStackView]-0-|"
+        let hProductInfoStackViewTblContainer = "H:|-0-[productInfoStackView]-0-|"
         constraints += NSLayoutConstraint.constraints(withVisualFormat: vProductInfoStackViewTblContainer, options: .alignAllLeading, metrics: metrix, views: views)
-        let leadingProductInfo = NSLayoutConstraint(item: productInfoStackView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-        leadingProductInfo.identifier = "leadingProductInfo"
-        constraints += [leadingProductInfo]
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: hProductInfoStackViewTblContainer, options: .alignAllTop, metrics: metrix, views: views)
         constraints += [NSLayoutConstraint(item: productInfoStackView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: 0)]
+        
+        //MARK: viewLevelOne and viewLevelTwo constrains
+        viewLevelOne.translatesAutoresizingMaskIntoConstraints = false
+        viewLevelTwo.translatesAutoresizingMaskIntoConstraints = false
+        constraints += [NSLayoutConstraint(item: viewLevelOne, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 12)]
+        constraints += [NSLayoutConstraint(item: viewLevelTwo, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 12)]
         
         //MARK: childInfoStackView constraints
         childInfoStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -95,13 +103,20 @@ class ProductTableViewCell: UITableViewCell {
         
         //MARK: viewChildInfo constraints
         viewChildInfo.translatesAutoresizingMaskIntoConstraints = false
-        constraints += [NSLayoutConstraint(item: viewChildInfo, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)]
+        constraints += [NSLayoutConstraint(item: viewChildInfo, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)]
         
         //MARK: lblJumlahChild constraints
         lblJumlahChild.translatesAutoresizingMaskIntoConstraints = false
-        constraints += [NSLayoutConstraint(item: lblJumlahChild, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 15)]
+        constraints += [NSLayoutConstraint(item: lblJumlahChild, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)]
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func viewLevel() {
+        viewLevelOne.backgroundColor = .white
+        contentView.addSubview(viewLevelOne)
+        viewLevelTwo.backgroundColor = .white
+        contentView.addSubview(viewLevelTwo)
     }
 
     private func addNamaProduct() {
@@ -133,6 +148,8 @@ class ProductTableViewCell: UITableViewCell {
         childInfoStackView.addArrangedSubview(lblJumlahChild)
         childInfoStackView.addArrangedSubview(lblChild)
         viewChildInfo.addSubview(childInfoStackView)
+        productInfoStackView.addArrangedSubview(viewLevelOne)
+        productInfoStackView.addArrangedSubview(viewLevelTwo)
         productInfoStackView.addArrangedSubview(lblNamaProduct)
         productInfoStackView.addArrangedSubview(viewChildInfo)
         contentView.addSubview(productInfoStackView)
@@ -144,26 +161,56 @@ extension ProductTableViewCell {
     func setProductInfo(product: Product) {
         lblNamaProduct.text = product.name
         lblJumlahChild.text = "\(product.child.count)"
+        uiControll?.doValidation(product: product)
         listChild = product.child
-        updateConstraintsByLevel(level: product.level)
-        contentView.layoutIfNeeded()
-    }
-    private func updateConstraintsByLevel(level: Int) {
-        var constrains = contentView.constraints
-        if level == 0 {
-            return
-        }
-        guard let getLeadingProductInfo = constraints.firstIndex(where: { (constraint) -> Bool in
-            constraint.identifier == "leadingProductInfo"
-        }) else {
-            return
-        }
-        NSLayoutConstraint.deactivate(constrains)
-        constrains[getLeadingProductInfo] = NSLayoutConstraint(item: productInfoStackView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: CGFloat((level * 12)))
-        NSLayoutConstraint.activate(constrains)
     }
     
-    func getCellState() -> CellState{
-        return cellState
+    fileprivate func getViewChildInfo() -> UIView {
+        return viewChildInfo
     }
+    
+    fileprivate func getViewLvOne() -> UIView {
+        return viewLevelOne
+    }
+    
+    fileprivate func getViewLvTwo() -> UIView {
+        return viewLevelTwo
+    }
+}
+
+
+class ProductCellControll {
+    var controller: UITableViewCell?
+    
+    init(controller: UITableViewCell) {
+        self.controller = controller
+    }
+    
+}
+extension ProductCellControll: ProductTableHelper {
+    func doValidation(product: Product) {
+        guard let _controller = self.controller as? ProductTableViewCell else {
+            return
+        }
+        
+        if product.child.count == 0 {
+            _controller.getViewChildInfo().isHidden = true
+        } else {
+            _controller.getViewChildInfo().isHidden = false
+        }
+        
+        if product.level == 1 {
+            _controller.getViewLvOne().isHidden = false
+            _controller.getViewLvTwo().isHidden = true
+        } else if product.level == 2 {
+            _controller.getViewLvOne().isHidden = false
+            _controller.getViewLvTwo().isHidden = false
+        } else if product.level == 0 {
+            _controller.getViewLvOne().isHidden = true
+            _controller.getViewLvTwo().isHidden = true
+        }
+        
+    }
+    
+    
 }
