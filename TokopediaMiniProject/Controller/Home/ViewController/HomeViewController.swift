@@ -144,8 +144,15 @@ extension HomeViewController {
         let vc = StageTwoViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc private func toStageOne() {
+        let vc = StageOneViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func setupButton() {
         secondStage.addTarget(self, action: #selector(toStageTwo), for: .touchDown)
+        firstStage.addTarget(self, action: #selector(toStageOne), for: .touchDown)
     }
     
 }
