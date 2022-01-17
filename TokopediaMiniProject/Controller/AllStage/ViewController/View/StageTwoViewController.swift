@@ -48,6 +48,10 @@ class StageTwoViewController: UIViewController {
     }
     */
     
+    override func viewWillLayoutSubviews() {
+        //MARK: mau buat proses detect screen orientation
+    }
+    
     private func bind() {
         searchBar.searchText = { [weak self] keyword in
             self?.searchKeyword(keyword: keyword)
