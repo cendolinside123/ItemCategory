@@ -37,6 +37,7 @@ class ListProductViewController: UIViewController {
         // Do any additional setup after loading the view.
         setLayout()
         setConstraints()
+        setupTable()
         uiControll = ListProductUIControll(controller: self)
         bind()
         runTask()
@@ -60,6 +61,7 @@ class ListProductViewController: UIViewController {
             self?.tableContent.reloadData()
         }
         viewModel?.productResult = { [weak self] _ in
+            self?.uiControll?.hideLoading(completion: nil)
             self?.tableContent.reloadData()
         }
     }
@@ -120,6 +122,7 @@ class ListProductViewController: UIViewController {
     private func setupTable() {
         tableContent.delegate = self
         tableContent.dataSource = self
+        tableContent.register(ProductTableViewCell.self, forCellReuseIdentifier: "ProductCell")
         tableContent.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableContent.tableFooterView = UIView()
     }
@@ -149,7 +152,16 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        if let getProductInfo = viewModel?.result[indexPath.row] {
+            cell.setProductInfo(product: getProductInfo)
+        } else {
+            return UITableViewCell()
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
