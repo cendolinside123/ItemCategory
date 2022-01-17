@@ -75,7 +75,10 @@ class SearchBar: UIView {
         searchBox.clearButtonMode = .always
         searchBox.placeholder = "Search Product"
         searchBox.backgroundColor = .white
-        
+        searchBox.layer.borderColor = UIColor.black.cgColor
+        searchBox.layer.borderWidth = 1
+        searchBox.textColor = .black
+        searchBox.delegate = self
     }
 
 }
