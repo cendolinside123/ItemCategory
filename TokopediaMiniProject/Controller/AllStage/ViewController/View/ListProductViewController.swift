@@ -77,7 +77,10 @@ class ListProductViewController: UIViewController {
             self?.tableContent.reloadData()
         }
         viewModel?.toggleResult = { [weak self] editedIndex, updateStatus in
-            self?.productControll?.cellExpandValidation(listIndex: editedIndex, status: updateStatus)
+            if let getTabel = self?.tableContent {
+                self?.productControll?.cellExpandValidation(listIndex: editedIndex, status: updateStatus, tableView: getTabel)
+            }
+            
         }
     }
     
@@ -159,10 +162,6 @@ extension ListProductViewController {
         listExpandProduxt.append(["id": id, "root": root])
     }
     
-    fileprivate func getTableContent() -> UITableView {
-        return tableContent
-    }
-    
     fileprivate func expandProduct(product: Product) {
         viewModel?.expandProduct(child: product.child)
     }
@@ -222,24 +221,25 @@ fileprivate class ListProductHelper {
 }
 
 extension ListProductHelper: ListProductHelperGuide {
-    func cellExpandValidation(listIndex: [Int], status: Bool) {
+    
+    func cellExpandValidation(listIndex: [Int], status: Bool, tableView: UITableView) {
         
         var getlListIndex: [IndexPath] = []
         if status == true {
             getlListIndex = listIndex.map({ (getIndex) -> IndexPath in
                 return IndexPath(row: getIndex, section: 0)
             })
-            (self.controller as? ListProductViewController)?.getTableContent().beginUpdates()
-            (self.controller as? ListProductViewController)?.getTableContent().insertRows(at: getlListIndex, with: .automatic)
-            (self.controller as? ListProductViewController)?.getTableContent().endUpdates()
+            tableView.beginUpdates()
+            tableView.insertRows(at: getlListIndex, with: .automatic)
+            tableView.endUpdates()
 
         } else {
             getlListIndex = listIndex.map({ (getIndex) -> IndexPath in
                 return IndexPath(row: getIndex, section: 0)
             })
-            (self.controller as? ListProductViewController)?.getTableContent().beginUpdates()
-            (self.controller as? ListProductViewController)?.getTableContent().deleteRows(at: getlListIndex, with: .automatic)
-            (self.controller as? ListProductViewController)?.getTableContent().endUpdates()
+            tableView.beginUpdates()
+            tableView.deleteRows(at: getlListIndex, with: .automatic)
+            tableView.endUpdates()
         }
         
     }
