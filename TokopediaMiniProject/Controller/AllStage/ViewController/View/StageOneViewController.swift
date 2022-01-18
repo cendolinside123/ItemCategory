@@ -38,8 +38,8 @@ class StageOneViewController: UIViewController {
     }
     */
     
-    override func viewWillLayoutSubviews() {
-        //MARK: mau buat proses detect screen orientation
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     private func bind() {
