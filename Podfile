@@ -8,6 +8,7 @@ target 'TokopediaMiniProject' do
   # Pods for TokopediaMiniProject
   pod 'Alamofire'   
   pod 'SwiftyJSON'
+  pod 'Kingfisher'
   
   target 'TokopediaMiniProjectTests' do
     inherit! :search_paths
