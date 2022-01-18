@@ -27,14 +27,14 @@ extension UIImageView {
             .cacheOriginalImage
         ]) { result in
             switch result{
-            case .success(let value):
+            case .success(_):
                 print("cache success : \(url)")
             case .failure(let error):
                 print("cache failed : \(error.localizedDescription) url : \(url)")
             }
         }
         
-        //start
+        // start
         ImageClassManager.sharedInstance.initialize().retrieveImage(forKey:"\(url)", options: [
             .transition(.fade(10.0)),
             .loadDiskFileSynchronously,
@@ -73,7 +73,7 @@ extension UIImageView {
                     }
                 }
             }
-        //end
+        // end
         
     }
 }
@@ -91,7 +91,7 @@ class ImageClassManager{
         }
         else{
             let setupCache = ImageCache.default
-            //setupCache.memoryStorage.config.countLimit = 1000 * 1024 * 1024
+            // setupCache.memoryStorage.config.countLimit = 1000 * 1024 * 1024
             setupCache.memoryStorage.config.totalCostLimit = 1
             setupCache.diskStorage.config.expiration = .days(3)
 //            setupCache.calculateDiskStorageSize(completion: {result in
