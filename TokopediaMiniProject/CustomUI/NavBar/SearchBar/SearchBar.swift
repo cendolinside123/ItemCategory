@@ -73,10 +73,12 @@ class SearchBar: UIView {
     private func addSearchBox() {
         contentView.addSubview(searchBox)
         searchBox.clearButtonMode = .always
-        searchBox.placeholder = "Search Product"
+        searchBox.attributedPlaceholder = NSAttributedString(string: "Search Product", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         searchBox.backgroundColor = .white
         searchBox.layer.borderColor = UIColor.black.cgColor
         searchBox.layer.borderWidth = 1
+        searchBox.clipsToBounds = true
+        searchBox.layer.cornerRadius = 5
         searchBox.textColor = .black
         searchBox.delegate = self
     }
