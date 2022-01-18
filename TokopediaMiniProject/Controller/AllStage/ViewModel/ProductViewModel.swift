@@ -240,8 +240,13 @@ extension ProductViewModel: ProductVMGuideline {
                             self.hideSpesificProduct(child: product.child)
                             listExpandProduxt.remove(at: index)
                         } else {
-                            self.hideInependV2(product: product)
-                            listExpandProduxt.remove(at: index)
+                            if product.level == 1 {
+                                self.hideInependV2(product: product)
+                                listExpandProduxt.remove(at: index)
+                            } else {
+                                self.hideSpesificProduct(child: product.child)
+                                listExpandProduxt.remove(at: index)
+                            }
                         }
                     }
                 } else {
