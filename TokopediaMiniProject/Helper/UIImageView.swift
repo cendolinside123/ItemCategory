@@ -11,15 +11,13 @@ import Kingfisher
 
 
 extension UIImageView {
-    func setImage(url:String,times:Int = 3) {
+    func setImage(url: String, times: Int = 3) {
         
         image = nil
         
         guard let getURL = URL(string: url) else {
             return
         }
-        
-        let placeholder = #imageLiteral(resourceName: "musicDefault")
         let imageResource = ImageResource(downloadURL: getURL, cacheKey: url)
         
         
@@ -54,20 +52,20 @@ extension UIImageView {
                                 self?.image = cacheImage
                             }
                             else{
-                                self?.image = #imageLiteral(resourceName: "musicDefault")
+                                self?.image = #imageLiteral(resourceName: "shop")
                             }
                             
                         }
                         else{
                             print("cache local type \(value.cacheType) url: \(url)")
-                            self?.image = #imageLiteral(resourceName: "musicDefault")
+                            self?.image = #imageLiteral(resourceName: "shop")
                         }
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
                     if times > 0 {
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-                            self?.image = #imageLiteral(resourceName: "musicDefault")
+                            self?.image = #imageLiteral(resourceName: "shop")
                         })
                         self?.setImage(url: url, times: times - 1)
                     } else {
