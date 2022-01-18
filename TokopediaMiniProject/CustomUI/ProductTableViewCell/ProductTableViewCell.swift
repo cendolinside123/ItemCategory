@@ -42,7 +42,7 @@ class ProductTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
-        uiControll = ProductCellControll(controller: self)
+        uiControll = ProductCellControll()
     }
     
     required init?(coder: NSCoder) {
@@ -158,59 +158,10 @@ class ProductTableViewCell: UITableViewCell {
 }
 
 extension ProductTableViewCell {
-    func setProductInfo(product: Product) {
+    func setProductInfo(product: Product, searchText: String = "") {
         lblNamaProduct.text = product.name
         lblJumlahChild.text = "\(product.child.count)"
-        uiControll?.doValidation(product: product)
+        uiControll?.doValidation(product: product, childInfo: viewChildInfo, spaceLvOne: viewLevelOne, spaceLvTwo: viewLevelTwo)
         listChild = product.child
     }
-    
-    fileprivate func getViewChildInfo() -> UIView {
-        return viewChildInfo
-    }
-    
-    fileprivate func getViewLvOne() -> UIView {
-        return viewLevelOne
-    }
-    
-    fileprivate func getViewLvTwo() -> UIView {
-        return viewLevelTwo
-    }
-}
-
-
-class ProductCellControll {
-    var controller: UITableViewCell?
-    
-    init(controller: UITableViewCell) {
-        self.controller = controller
-    }
-    
-}
-extension ProductCellControll: ProductTableHelper {
-    func doValidation(product: Product) {
-        guard let _controller = self.controller as? ProductTableViewCell else {
-            return
-        }
-        
-        if product.child.count == 0 {
-            _controller.getViewChildInfo().isHidden = true
-        } else {
-            _controller.getViewChildInfo().isHidden = false
-        }
-        
-        if product.level == 1 {
-            _controller.getViewLvOne().isHidden = false
-            _controller.getViewLvTwo().isHidden = true
-        } else if product.level == 2 {
-            _controller.getViewLvOne().isHidden = false
-            _controller.getViewLvTwo().isHidden = false
-        } else if product.level == 0 {
-            _controller.getViewLvOne().isHidden = true
-            _controller.getViewLvTwo().isHidden = true
-        }
-        
-    }
-    
-    
 }

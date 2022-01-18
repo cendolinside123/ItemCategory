@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ProductTableHelper {
-    func doValidation(product: Product)
+    func doValidation(product: Product, childInfo: UIView, spaceLvOne: UIView, spaceLvTwo: UIView)
 }
