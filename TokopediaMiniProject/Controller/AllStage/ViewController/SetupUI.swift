@@ -11,6 +11,7 @@ import UIKit
 enum VCType {
     case independent
     case popup
+    case independentV2
 }
 
 protocol ListProductHelperGuide {
