@@ -60,6 +60,35 @@ extension ProductViewModel {
         return getResult
     }
     
+    private func populateAllSearchV2(listProduct: [Product]) -> [Product] {
+        var getResult: [Product] = []
+        
+        for product in listProduct {
+            
+            let getChild: [Product] = populateAlSearch(listProduct: product.child)
+            
+            getResult.append(Product(id: product.id, name: product.name, identifier: product.identifier, url: product.url, iconImageUrl: product.iconImageUrl, parentName: product.parentName, applinks: product.applinks, iconBannerURL: product.iconBannerURL, child: product.child, level: product.level, root: product.root))
+            if getChild.count > 0 {
+                for spesificChild in getChild {
+                    if spesificChild.level != 2 {
+                        getResult.append(spesificChild)
+                        if spesificChild.child.count > 0 {
+                            getResult.append(Product(id: "\(spesificChild.id)-V2", name: "--", identifier: "--", url: "--", iconImageUrl: "--", parentName: "--", applinks: "--", iconBannerURL: "--", child: spesificChild.child, level: 2, root: spesificChild.root))
+                        }
+                        
+                    } else {
+                        
+                    }
+                }
+                
+                
+            }
+        }
+        
+        
+        return getResult
+    }
+    
     func expandInependV2(product: Product) {
         if self.tempProduct.count == 0 {
             self.tempProduct = self.result
@@ -160,7 +189,7 @@ extension ProductViewModel: ProductVMGuideline {
         })
     }
     
-    func searchProduct(keyword: String) {
+    func searchProduct(keyword: String, type: VCType) {
         if keyword == "" {
             self.result = self.tempProduct
             self.tempProduct = []
@@ -175,7 +204,11 @@ extension ProductViewModel: ProductVMGuideline {
         }
         
         self.result = filterProduct(keyWord: keyword, listProduct: self.result)
-        self.result = populateAlSearch(listProduct: self.result)
+        if type != .independentV2 {
+            self.result = populateAlSearch(listProduct: self.result)
+        } else {
+            self.result = populateAllSearchV2(listProduct: self.result)
+        }
         self.listExpandProduxt = []
         for getProduct in self.result {
             self.listExpandProduxt.append(["id": getProduct.id, "root": getProduct.root])

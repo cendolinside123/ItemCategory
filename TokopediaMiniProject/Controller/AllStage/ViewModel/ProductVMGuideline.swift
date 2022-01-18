@@ -9,7 +9,7 @@ import Foundation
 
 protocol ProductVMGuideline {
     func loadProduct(reloadTime: Int)
-    func searchProduct(keyword: String)
+    func searchProduct(keyword: String, type: VCType)
     func expandProduct(child: [Product])
     func hideAllProduct(id: String)
     func hideSpesificProduct(child: [Product])

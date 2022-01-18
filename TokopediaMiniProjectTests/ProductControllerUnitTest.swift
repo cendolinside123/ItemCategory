@@ -46,7 +46,7 @@ class ProductControllerUnitTest: XCTestCase {
         
         viewModel?.loadProduct(reloadTime: 3)
         wait(for: [loadExpectation], timeout: 1)
-        viewModel?.searchProduct(keyword: "Dapur")
+        viewModel?.searchProduct(keyword: "Dapur", type: .independent)
         wait(for: [filterExpectation], timeout: 1)
     }
     
@@ -70,7 +70,7 @@ class ProductControllerUnitTest: XCTestCase {
         
         viewModel?.loadProduct(reloadTime: 3)
         wait(for: [loadExpectation], timeout: 1)
-        viewModel?.searchProduct(keyword: "Dapur")
+        viewModel?.searchProduct(keyword: "Dapur", type: .independent)
         wait(for: [filterExpectation], timeout: 1)
     }
     
@@ -94,7 +94,7 @@ class ProductControllerUnitTest: XCTestCase {
         
         viewModel?.loadProduct(reloadTime: 3)
         wait(for: [loadExpectation], timeout: 1)
-        viewModel?.searchProduct(keyword: "Dapur")
+        viewModel?.searchProduct(keyword: "Dapur", type: .independent)
         wait(for: [filterExpectation], timeout: 1)
     }
     
