@@ -59,6 +59,34 @@ extension ProductViewModel {
         
         return getResult
     }
+    
+    func expandInependV2(product: Product) {
+        if self.tempProduct.count == 0 {
+            self.tempProduct = self.result
+        }
+        
+        if let getIndex = self.result.firstIndex(where: {$0.child == product.child}), getIndex + 1 <= self.result.count {
+            
+            self.result.insert(Product(id: "\(product.id)-V2", name: "--", identifier: "--", url: "--", iconImageUrl: "--", parentName: "--", applinks: "--", iconBannerURL: "--", child: product.child, level: 2, root: product.root), at: getIndex + 1)
+            
+            var listIndex: [Int] = []
+            
+            listIndex.append((getIndex + 1))
+            self.toggleResult?(listIndex, true)
+        }
+    }
+    
+    func hideInependV2(product: Product) {
+        
+        var listIndex: [Int] = []
+        
+        if let getIndex = self.result.firstIndex(where: {$0.child == product.child && $0.id == "\(product.id)-V2" && $0.root == product.root}) {
+            listIndex.append(getIndex)
+            self.result.remove(at: getIndex)
+            self.toggleResult?(listIndex, false)
+        }
+    }
+    
 }
 
 extension ProductViewModel: ProductVMGuideline {
@@ -163,12 +191,25 @@ extension ProductViewModel: ProductVMGuideline {
                 if type != .independentV2 {
                     self.expandProduct(child: product.child)
                     listExpandProduxt.append(["id": product.id, "root": product.root])
+                } else {
+                    if product.level == 1 {
+                        self.expandInependV2(product: product)
+                        listExpandProduxt.append(["id": product.id, "root": product.root])
+                    } else {
+                        self.expandProduct(child: product.child)
+                        listExpandProduxt.append(["id": product.id, "root": product.root])
+                    }
                 }
             } else {
                 if product.root != "" {
                     if let index = listExpandProduxt.firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root })  {
-                        self.hideSpesificProduct(child: product.child)
-                        listExpandProduxt.remove(at: index)
+                        if type != .independentV2 {
+                            self.hideSpesificProduct(child: product.child)
+                            listExpandProduxt.remove(at: index)
+                        } else {
+                            self.hideInependV2(product: product)
+                            listExpandProduxt.remove(at: index)
+                        }
                     }
                 } else {
                     if let index = listExpandProduxt.firstIndex(where: { $0["id"] == product.id && $0["root"] == "" }) {
