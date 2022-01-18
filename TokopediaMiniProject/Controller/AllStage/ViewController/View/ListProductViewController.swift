@@ -15,7 +15,6 @@ class ListProductViewController: UIViewController {
     private var typeViewController: VCType?
     private var uiControll: ListUIGuideHelper?
     private var viewModel: ProductVMGuideline?
-    private var listExpandProduxt: [[String: String]] = []
     private var productControll: ListProductHelperGuide?
     var sendSelectedValue: ((Product) -> Void)?
     private var selectedText: String = ""
@@ -42,7 +41,7 @@ class ListProductViewController: UIViewController {
         setConstraints()
         setupTable()
         uiControll = ListProductUIControll(controller: self)
-        productControll = ListProductHelper(controller: self)
+        productControll = ListProductHelper()
         bind()
         
     }
@@ -65,15 +64,9 @@ class ListProductViewController: UIViewController {
     
     private func bind() {
         viewModel?.filterResult = { [weak self] _ in
-            self?.listExpandProduxt = []
-            if let getResult = self?.viewModel?.result {
-                self?.productControll?.updateExpandValidation(product: getResult)
-            }
-            
             self?.tableContent.reloadData()
         }
         viewModel?.productResult = { [weak self] _ in
-            self?.listExpandProduxt = []
             self?.uiControll?.hideLoading(completion: nil)
             self?.tableContent.reloadData()
         }
@@ -81,7 +74,11 @@ class ListProductViewController: UIViewController {
             if let getTabel = self?.tableContent {
                 self?.productControll?.cellExpandValidation(listIndex: editedIndex, status: updateStatus, tableView: getTabel)
             }
-            
+        }
+        viewModel?.sendaProduct = { [weak self] selectedProduct in
+            self?.dismiss(animated: true, completion: {
+                self?.sendSelectedValue?(selectedProduct)
+            })
         }
     }
     
@@ -156,34 +153,6 @@ extension ListProductViewController {
         viewModel?.searchProduct(keyword: keyWord)
     }
     
-    fileprivate func getListExpandProduxt() -> [[String: String]] {
-        return listExpandProduxt
-    }
-    
-    fileprivate func updateListExpandProduxt(id: String, root: String) {
-        listExpandProduxt.append(["id": id, "root": root])
-    }
-    
-    fileprivate func expandProduct(product: Product) {
-        viewModel?.expandProduct(child: product.child)
-    }
-    
-    fileprivate func hideSpesificProduct(product: Product) {
-        viewModel?.hideSpesificProduct(child: product.child)
-    }
-    
-    fileprivate func hideAllProduct(id: String) {
-        viewModel?.hideAllProduct(id: id)
-    }
-    
-    fileprivate func removeSelectedlistExpandProduxt(index: Int) {
-        listExpandProduxt.remove(at: index)
-    }
-    
-    fileprivate func removeAllListExpandProduct(id: String) {
-        listExpandProduxt.removeAll(where: {$0["root"] == id})
-    }
-    
 }
 extension ListProductViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -210,18 +179,14 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let getViewModel = self.viewModel, let typeVC = typeViewController {
-            productControll?.selectValidation(product: getViewModel.result[indexPath.row], type: typeVC)
-            
+            getViewModel.selectExpandProduct(product: getViewModel.result[indexPath.row], type: typeVC)
         }
     }
 
 }
 
 fileprivate class ListProductHelper {
-    private var controller: UIViewController?
-    
-    init(controller: UIViewController) {
-        self.controller = controller
+    init() {
     }
     
 }
@@ -259,9 +224,6 @@ extension ListProductHelper: ListProductHelperGuide {
     }
     
     func updateExpandValidation(product: [Product]) {
-        for getExpanded in product {
-            (self.controller as? ListProductViewController)?.updateListExpandProduxt(id: getExpanded.id, root: getExpanded.root)
-        }
     }
     
     func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
@@ -281,40 +243,5 @@ extension ListProductHelper: ListProductHelperGuide {
     }
     
     func selectValidation(product: Product, type: VCType) {
-        guard let _controller = self.controller as? ListProductViewController else {
-            return
-        }
-        
-        if product.child.count != 0 {
-            if _controller.getListExpandProduxt().firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root }) == nil {
-                if type != .independentV2 {
-                    _controller.expandProduct(product: product)
-                    _controller.updateListExpandProduxt(id: product.id, root: product.root)
-                }
-            } else {
-                if product.root != "" {
-                    
-                    if let index = _controller.getListExpandProduxt().firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root }) {
-                        _controller.hideSpesificProduct(product: product)
-                        _controller.removeSelectedlistExpandProduxt(index: index)
-                    }
-                } else {
-                    if let index = _controller.getListExpandProduxt().firstIndex(where: { $0["id"] == product.id && $0["root"] == "" }) {
-                        _controller.hideAllProduct(id: product.id)
-                        _controller.removeAllListExpandProduct(id: product.id)
-                        _controller.removeSelectedlistExpandProduxt(index: index)
-                    }
-                }
-            }
-        } else {
-            
-            if type != .popup {
-                print("not reload")
-            } else {
-                _controller.dismiss(animated: true, completion: {
-                    _controller.sendSelectedValue?(product)
-                })
-            }
-        }
     }
 }

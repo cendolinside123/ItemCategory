@@ -12,8 +12,10 @@ class ProductViewModel {
     var filterResult: (([Product]) -> Void)?
     var toggleResult: (([Int], Bool) -> Void)? //note: how to use, #1 param list of index 2# if false mean delete true mean adding
     var fetchError: ((Error) -> Void)?
+    var sendaProduct: ((Product) -> Void)?
     var result: [Product] = []
     private var tempProduct: [Product] = []
+    private var listExpandProduxt: [[String: String]] = []
     
     private var useCase: StageNetworkProvider
     
@@ -118,6 +120,7 @@ extension ProductViewModel: ProductVMGuideline {
             switch response {
             case .success(let result):
                 self?.result = result
+                self?.listExpandProduxt = []
                 self?.productResult?(result)
             case .failed(let error):
                 if reloadTime > 0 {
@@ -145,8 +148,45 @@ extension ProductViewModel: ProductVMGuideline {
         
         self.result = filterProduct(keyWord: keyword, listProduct: self.result)
         self.result = populateAlSearch(listProduct: self.result)
+        self.listExpandProduxt = []
+        for getProduct in self.result {
+            self.listExpandProduxt.append(["id": getProduct.id, "root": getProduct.root])
+        }
+        
         self.filterResult?(self.result)
     }
     
+    
+    func selectExpandProduct(product: Product, type: VCType) {
+        if product.child.count != 0 {
+            if listExpandProduxt.firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root }) == nil {
+                if type != .independentV2 {
+                    self.expandProduct(child: product.child)
+                    listExpandProduxt.append(["id": product.id, "root": product.root])
+                }
+            } else {
+                if product.root != "" {
+                    if let index = listExpandProduxt.firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root })  {
+                        self.hideSpesificProduct(child: product.child)
+                        listExpandProduxt.remove(at: index)
+                    }
+                } else {
+                    if let index = listExpandProduxt.firstIndex(where: { $0["id"] == product.id && $0["root"] == "" }) {
+                        self.hideAllProduct(id: product.id)
+                        listExpandProduxt.removeAll(where: {$0["root"] == product.id})
+                        listExpandProduxt.remove(at: index)
+                    }
+                }
+            }
+        } else {
+            if type != .popup {
+                print("not reload")
+            } else {
+                if product.level == 2 {
+                    sendaProduct?(product)
+                }
+            }
+        }
+    }
     
 }
