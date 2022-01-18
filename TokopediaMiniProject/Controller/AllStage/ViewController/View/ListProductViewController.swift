@@ -16,6 +16,7 @@ class ListProductViewController: UIViewController {
     private var uiControll: ListUIGuideHelper?
     private var viewModel: ProductVMGuideline?
     private var listExpandProduxt: [[String: String]] = []
+    private var productControll: ListProductHelperGuide?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +40,7 @@ class ListProductViewController: UIViewController {
         setConstraints()
         setupTable()
         uiControll = ListProductUIControll(controller: self)
+        productControll = ListProductHelper(controller: self)
         bind()
         
     }
@@ -63,10 +65,7 @@ class ListProductViewController: UIViewController {
         viewModel?.filterResult = { [weak self] _ in
             self?.listExpandProduxt = []
             if let getResult = self?.viewModel?.result {
-                
-                for getExpanded in getResult {
-                    self?.listExpandProduxt.append(["id": getExpanded.id, "root": getExpanded.root])
-                }
+                self?.productControll?.updateExpandValidation(product: getResult)
             }
             
             self?.tableContent.reloadData()
@@ -77,23 +76,7 @@ class ListProductViewController: UIViewController {
             self?.tableContent.reloadData()
         }
         viewModel?.toggleResult = { [weak self] editedIndex, updateStatus in
-            var listIndex: [IndexPath] = []
-            if updateStatus == true {
-                listIndex = editedIndex.map({ (getIndex) -> IndexPath in
-                    return IndexPath(row: getIndex, section: 0)
-                })
-                self?.tableContent.beginUpdates()
-                self?.tableContent.insertRows(at: listIndex, with: .automatic)
-                self?.tableContent.endUpdates()
-
-            } else {
-                listIndex = editedIndex.map({ (getIndex) -> IndexPath in
-                    return IndexPath(row: getIndex, section: 0)
-                })
-                self?.tableContent.beginUpdates()
-                self?.tableContent.deleteRows(at: listIndex, with: .automatic)
-                self?.tableContent.endUpdates()
-            }
+            self?.productControll?.cellExpandValidation(listIndex: editedIndex, status: updateStatus)
         }
     }
     
@@ -167,6 +150,38 @@ extension ListProductViewController {
         viewModel?.searchProduct(keyword: keyWord)
     }
     
+    fileprivate func getListExpandProduxt() -> [[String: String]] {
+        return listExpandProduxt
+    }
+    
+    fileprivate func updateListExpandProduxt(id: String, root: String) {
+        listExpandProduxt.append(["id": id, "root": root])
+    }
+    
+    fileprivate func getTableContent() -> UITableView {
+        return tableContent
+    }
+    
+    fileprivate func expandProduct(product: Product) {
+        viewModel?.expandProduct(child: product.child)
+    }
+    
+    fileprivate func hideSpesificProduct(product: Product) {
+        viewModel?.hideSpesificProduct(child: product.child)
+    }
+    
+    fileprivate func hideAllProduct(id: String) {
+        viewModel?.hideAllProduct(id: id)
+    }
+    
+    fileprivate func removeSelectedlistExpandProduxt(index: Int) {
+        listExpandProduxt.remove(at: index)
+    }
+    
+    fileprivate func removeAllListExpandProduct(id: String) {
+        listExpandProduxt.removeAll(where: {$0["root"] == id})
+    }
+    
 }
 extension ListProductViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -174,17 +189,13 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.selectionStyle = .none
         
-        if let getProductInfo = viewModel?.result[indexPath.row] {
-            cell.setProductInfo(product: getProductInfo)
+        if let getProductInfo = viewModel?.result[indexPath.row], let typeVC = typeViewController {
+            return productControll?.cellDisplayControll(tableView: tableView, type: typeVC, indexPath: indexPath, product: getProductInfo) ?? UITableViewCell()
         } else {
             return UITableViewCell()
         }
-        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -192,32 +203,94 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let getViewModel = self.viewModel {
-            if getViewModel.result[indexPath.row].child.count != 0 {
-                
-                
-                if listExpandProduxt.firstIndex(where: { $0["id"] == getViewModel.result[indexPath.row].id && $0["root"] == getViewModel.result[indexPath.row].root }) == nil {
-                    self.viewModel?.expandProduct(child: getViewModel.result[indexPath.row].child)
-                    listExpandProduxt.append(["id": getViewModel.result[indexPath.row].id, "root": getViewModel.result[indexPath.row].root])
-                } else {
-                    if getViewModel.result[indexPath.row].root != "" {
-                        getViewModel.hideSpesificProduct(child: getViewModel.result[indexPath.row].child)
-                        listExpandProduxt.remove(at: listExpandProduxt.firstIndex(where: { $0["id"] == getViewModel.result[indexPath.row].id && $0["root"] == getViewModel.result[indexPath.row].root })!)
-                    } else {
-                        getViewModel.hideAllProduct(id: getViewModel.result[indexPath.row].id)
-                        listExpandProduxt.removeAll(where: {$0["root"] == getViewModel.result[indexPath.row].id})
-                        listExpandProduxt.remove(at: listExpandProduxt.firstIndex(where: { $0["id"] == getViewModel.result[indexPath.row].id && $0["root"] == "" })!)
-                    }
-                    
-                }
-                
-            } else {
-                print("not reload")
-            }
+        if let getViewModel = self.viewModel, let typeVC = typeViewController {
+            productControll?.selectValidation(product: getViewModel.result[indexPath.row], type: typeVC)
             
         }
-        
+    }
+
+}
+
+fileprivate class ListProductHelper {
+    private var controller: UIViewController?
+    
+    init(controller: UIViewController) {
+        self.controller = controller
     }
     
 }
 
+extension ListProductHelper: ListProductHelperGuide {
+    func cellExpandValidation(listIndex: [Int], status: Bool) {
+        
+        var getlListIndex: [IndexPath] = []
+        if status == true {
+            getlListIndex = listIndex.map({ (getIndex) -> IndexPath in
+                return IndexPath(row: getIndex, section: 0)
+            })
+            (self.controller as? ListProductViewController)?.getTableContent().beginUpdates()
+            (self.controller as? ListProductViewController)?.getTableContent().insertRows(at: getlListIndex, with: .automatic)
+            (self.controller as? ListProductViewController)?.getTableContent().endUpdates()
+
+        } else {
+            getlListIndex = listIndex.map({ (getIndex) -> IndexPath in
+                return IndexPath(row: getIndex, section: 0)
+            })
+            (self.controller as? ListProductViewController)?.getTableContent().beginUpdates()
+            (self.controller as? ListProductViewController)?.getTableContent().deleteRows(at: getlListIndex, with: .automatic)
+            (self.controller as? ListProductViewController)?.getTableContent().endUpdates()
+        }
+        
+    }
+    
+    func updateExpandValidation(product: [Product]) {
+        for getExpanded in product {
+            (self.controller as? ListProductViewController)?.updateListExpandProduxt(id: getExpanded.id, root: getExpanded.root)
+        }
+    }
+    
+    func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.selectionStyle = .none
+        
+        cell.setProductInfo(product: product)
+        
+        return cell
+    }
+    
+    func selectValidation(product: Product, type: VCType) {
+        guard let _controller = self.controller as? ListProductViewController else {
+            return
+        }
+        
+        if product.child.count != 0 {
+            if _controller.getListExpandProduxt().firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root }) == nil {
+                _controller.expandProduct(product: product)
+                _controller.updateListExpandProduxt(id: product.id, root: product.root)
+            } else {
+                if product.root != "" {
+                    
+                    if let index = _controller.getListExpandProduxt().firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root }) {
+                        _controller.hideSpesificProduct(product: product)
+                        _controller.removeSelectedlistExpandProduxt(index: index)
+                    }
+                } else {
+                    if let index = _controller.getListExpandProduxt().firstIndex(where: { $0["id"] == product.id && $0["root"] == "" }) {
+                        _controller.hideAllProduct(id: product.id)
+                        _controller.removeAllListExpandProduct(id: product.id)
+                        _controller.removeSelectedlistExpandProduxt(index: index)
+                    }
+                }
+            }
+        } else {
+            
+            if type == .independent {
+                print("not reload")
+            } else if type == .popup {
+                
+            }
+        }
+    }
+}
