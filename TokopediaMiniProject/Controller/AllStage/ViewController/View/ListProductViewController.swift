@@ -223,9 +223,6 @@ extension ListProductHelper: ListProductHelperGuide {
         
     }
     
-    func updateExpandValidation(product: [Product]) {
-    }
-    
     func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
         
         if type == .independentV2 && product.level == 2 {
@@ -240,8 +237,5 @@ extension ListProductHelper: ListProductHelperGuide {
             
             return cell
         }
-    }
-    
-    func selectValidation(product: Product, type: VCType) {
     }
 }
