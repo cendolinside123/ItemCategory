@@ -28,13 +28,6 @@ class ProductTableViewCell: UITableViewCell {
         stack.distribution = .fill
         return stack
     }()
-    private let contentStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .fill
-        stack.distribution = .fill
-        return stack
-    }()
     
     private var listChild: [Product] = []
     private var uiControll: ProductTableHelper?
@@ -76,7 +69,7 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     private func setConstraints() {
-        let views: [String: Any] = ["viewLevelOne": viewLevelOne, "viewLevelTwo": viewLevelTwo, "lblNamaProduct": lblNamaProduct, "viewChildInfo": viewChildInfo, "lblJumlahChild": lblJumlahChild, "lblChild": lblChild, "childInfoStackView": childInfoStackView, "productInfoStackView": productInfoStackView, "contentStackView": contentStackView]
+        let views: [String: Any] = ["viewLevelOne": viewLevelOne, "viewLevelTwo": viewLevelTwo, "lblNamaProduct": lblNamaProduct, "viewChildInfo": viewChildInfo, "lblJumlahChild": lblJumlahChild, "lblChild": lblChild, "childInfoStackView": childInfoStackView, "productInfoStackView": productInfoStackView]
         let metrix: [String: Any] = [:]
         var constraints = [NSLayoutConstraint]()
         
