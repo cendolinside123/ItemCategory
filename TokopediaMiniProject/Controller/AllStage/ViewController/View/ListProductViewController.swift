@@ -201,7 +201,11 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        if let getViewModel = self.viewModel, let typeVC = typeViewController {
+            return productControll?.cellHighControll(type: typeVC, product: getViewModel.result[indexPath.row]) ?? 50
+        } else {
+            return 50
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -223,6 +227,14 @@ fileprivate class ListProductHelper {
 }
 
 extension ListProductHelper: ListProductHelperGuide {
+    func cellHighControll(type: VCType, product: Product) -> CGFloat {
+        if type == .independentV2 && product.level == 2 {
+            return 150
+        } else {
+            return 50
+        }
+    }
+    
     
     func cellExpandValidation(listIndex: [Int], status: Bool, tableView: UITableView) {
         
@@ -253,14 +265,19 @@ extension ListProductHelper: ListProductHelperGuide {
     }
     
     func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
+        
+        if type == .independentV2 && product.level == 2 {
             return UITableViewCell()
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            
+            cell.setProductInfo(product: product, searchText: selectedText)
+            
+            return cell
         }
-        cell.selectionStyle = .none
-        
-        cell.setProductInfo(product: product, searchText: selectedText)
-        
-        return cell
     }
     
     func selectValidation(product: Product, type: VCType) {
@@ -270,8 +287,10 @@ extension ListProductHelper: ListProductHelperGuide {
         
         if product.child.count != 0 {
             if _controller.getListExpandProduxt().firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root }) == nil {
-                _controller.expandProduct(product: product)
-                _controller.updateListExpandProduxt(id: product.id, root: product.root)
+                if type != .independentV2 {
+                    _controller.expandProduct(product: product)
+                    _controller.updateListExpandProduxt(id: product.id, root: product.root)
+                }
             } else {
                 if product.root != "" {
                     

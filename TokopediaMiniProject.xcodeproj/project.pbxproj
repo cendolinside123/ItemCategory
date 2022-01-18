@@ -160,6 +160,7 @@
 		040941CD27919FC0000C37E4 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				0479A46C2796D9DC0047D910 /* ProductCollectionViewCell */,
 				0488BEFB2794277400A3FA9B /* ProductTableViewCell */,
 				040941CE2791A01B000C37E4 /* NavBar */,
 			);
@@ -202,6 +203,13 @@
 				0474402C2792E4A000AF1421 /* ProductViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0479A46C2796D9DC0047D910 /* ProductCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProductCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		0488BEEA2793BE7100A3FA9B /* ViewController */ = {

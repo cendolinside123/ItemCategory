@@ -19,4 +19,5 @@ protocol ListProductHelperGuide {
     func updateExpandValidation(product: [Product])
     func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell
     func selectValidation(product: Product, type: VCType)
+    func cellHighControll(type: VCType, product: Product) -> CGFloat
 }
