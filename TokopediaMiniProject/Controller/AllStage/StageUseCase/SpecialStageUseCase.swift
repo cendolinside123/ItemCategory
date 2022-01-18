@@ -26,7 +26,7 @@ extension SpecialStageUseCase: StageNetworkProvider {
                     var getListProduct: [Product] = []
                     
                     for product in getJSON["data"]["categories"].arrayValue {
-                        getListProduct.append(Product(json: product))
+                        getListProduct.append(Product(aJson: product))
                     }
                     DispatchQueue.main.async {
                         completion(.success(getListProduct))

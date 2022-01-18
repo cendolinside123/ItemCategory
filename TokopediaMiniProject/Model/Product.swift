@@ -42,6 +42,25 @@ extension Product {
         
     }
     
+    init(aJson: JSON, level: Int = 0, root: String = "") {
+        id = aJson["id"].stringValue
+        name = aJson["name"].stringValue
+        identifier = aJson["identifier"].stringValue
+        url = aJson["url"].stringValue
+        iconImageUrl = aJson["icon_image_url"].stringValue
+        parentName = aJson["parentName"].stringValue
+        applinks = aJson["applinks"].stringValue
+        iconBannerURL = aJson["icon_banner"].stringValue
+        self.level = level
+        self.root = root
+        var childProduct = [Product]()
+        for product in aJson["child"].arrayValue {
+            childProduct.append(Product(json: product, level: level + 1, root: self.root == "" ? id : self.root))
+        }
+        child = childProduct
+        
+    }
+    
     // MARK: please don't use this init for prod, I use it for setup Mockup data
     init(id: String, name: String, identifier: String, url: String, iconImageUrl: String,
          parentName: String, applinks: String, iconBannerURL: String, child: [Product], level: Int) {
