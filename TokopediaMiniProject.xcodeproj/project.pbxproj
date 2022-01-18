@@ -27,6 +27,7 @@
 		0479A477279728030047D910 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A476279728030047D910 /* UIImageView.swift */; };
 		0479A47A2797338B0047D910 /* ProductV2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4792797338B0047D910 /* ProductV2TableViewCell.swift */; };
 		0479A47C279744200047D910 /* StageFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A47B279744200047D910 /* StageFourViewController.swift */; };
+		0479A47E279757370047D910 /* ListProductHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A47D279757370047D910 /* ListProductHelper.swift */; };
 		0488BEEC2793BE8D00A3FA9B /* SetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */; };
 		0488BEEF2793C01700A3FA9B /* ListProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */; };
 		0488BEF12793C95600A3FA9B /* UIGuideHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEF02793C95600A3FA9B /* UIGuideHelper.swift */; };
@@ -79,6 +80,7 @@
 		0479A476279728030047D910 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		0479A4792797338B0047D910 /* ProductV2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductV2TableViewCell.swift; sourceTree = "<group>"; };
 		0479A47B279744200047D910 /* StageFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageFourViewController.swift; sourceTree = "<group>"; };
+		0479A47D279757370047D910 /* ListProductHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductHelper.swift; sourceTree = "<group>"; };
 		0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupUI.swift; sourceTree = "<group>"; };
 		0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductViewController.swift; sourceTree = "<group>"; };
 		0488BEF02793C95600A3FA9B /* UIGuideHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGuideHelper.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				0488BEF42794026700A3FA9B /* StageTwoViewController.swift */,
 				04F972BE2795D90200CBE267 /* StageOneViewController.swift */,
 				0479A47B279744200047D910 /* StageFourViewController.swift */,
+				0479A47D279757370047D910 /* ListProductHelper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				0488BEF32793CCE000A3FA9B /* ListProductUIControll.swift in Sources */,
 				040941C427913023000C37E4 /* NetworkResult.swift in Sources */,
 				040941DA2791D223000C37E4 /* Constant.swift in Sources */,
+				0479A47E279757370047D910 /* ListProductHelper.swift in Sources */,
 				0488BEEF2793C01700A3FA9B /* ListProductViewController.swift in Sources */,
 				0488BEF82794193E00A3FA9B /* SearchBar.swift in Sources */,
 				040941D42791C038000C37E4 /* StageNetworkProvider.swift in Sources */,
