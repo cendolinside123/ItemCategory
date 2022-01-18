@@ -55,7 +55,7 @@ class ProductControllerUnitTest: XCTestCase {
         viewModel = ProductViewModel(useCase: useCase)
         let loadExpectation = expectation(description: "should return product data")
         let filterExpectation = expectation(description: "filtered product data sould same")
-        let expectedResult = MockData.getListDapurProduct()
+        let expectedResult = MockData.getListDapurProductNew()
         
         viewModel?.productResult = { result in
             XCTAssertGreaterThan(result.count, 0)
@@ -79,7 +79,7 @@ class ProductControllerUnitTest: XCTestCase {
         viewModel = ProductViewModel(useCase: useCase)
         let loadExpectation = expectation(description: "should return product data")
         let filterExpectation = expectation(description: "filtered product data sould same")
-        let expectedResult = MockData.getListDapurProduct()
+        let expectedResult = MockData.getListDapurProductNew()
         
         viewModel?.productResult = { result in
             XCTAssertGreaterThan(result.count, 0)
