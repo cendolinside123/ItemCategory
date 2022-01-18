@@ -17,6 +17,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         stack.distribution = .fill
         return stack
     }()
+    private var uiControll: ProductTableHelper?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +34,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        uiControll = ProductCellControll()
     }
     
     
@@ -96,9 +98,13 @@ class ProductCollectionViewCell: UICollectionViewCell {
 }
 
 extension ProductCollectionViewCell {
-    func setProduct(product: Product) {
+    func setProduct(product: Product, searchText: String = "") {
+        lblTitle.attributedText = nil
         lblTitle.text = product.name
         imageProduct.setImage(url: product.iconImageUrl)
+        if searchText != "" {
+            uiControll?.boldSelectedText(product: product, labelName: lblTitle, text: searchText)
+        }
     }
     
     func getImage() -> UIImageView {

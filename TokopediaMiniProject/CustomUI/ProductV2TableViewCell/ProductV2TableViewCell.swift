@@ -26,6 +26,7 @@ class ProductV2TableViewCell: UITableViewCell {
 
     
     private var listChild: [Product] = []
+    private var selectedText: String = ""
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -107,8 +108,9 @@ class ProductV2TableViewCell: UITableViewCell {
 }
 
 extension ProductV2TableViewCell {
-    func setupData(dummyProduct: Product) {
+    func setupData(dummyProduct: Product, selectedText: String = "") {
         listChild = dummyProduct.child
+        self.selectedText = selectedText
         collectionItem.reloadData()
     }
 }
@@ -122,7 +124,7 @@ extension ProductV2TableViewCell: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductColectionViewCell", for: indexPath) as? ProductCollectionViewCell else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "defaultCell", for: indexPath)
         }
-        cell.setProduct(product: listChild[indexPath.item])
+        cell.setProduct(product: listChild[indexPath.item], searchText: selectedText)
         return cell
     }
     
@@ -132,7 +134,7 @@ extension ProductV2TableViewCell: UICollectionViewDelegate, UICollectionViewData
             return
         }
         cell.getImage().kf.cancelDownloadTask()
-        cell.getImage().image = nil
+        cell.getImage().image = #imageLiteral(resourceName: "shop")
     }
     
 }
