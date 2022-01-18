@@ -151,7 +151,10 @@ extension ListProductViewController {
     
     func doSearchProduct(keyWord: String) {
         selectedText = keyWord
-        viewModel?.searchProduct(keyword: keyWord)
+        if let getType = self.typeViewController {
+            viewModel?.searchProduct(keyword: keyWord, type: getType)
+        }
+        
     }
     
 }
