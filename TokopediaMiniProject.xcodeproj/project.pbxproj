@@ -25,6 +25,7 @@
 		0479A4732796E04A0047D910 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4722796E04A0047D910 /* PopUpViewController.swift */; };
 		0479A475279703020047D910 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A474279703020047D910 /* StringHelper.swift */; };
 		0479A477279728030047D910 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A476279728030047D910 /* UIImageView.swift */; };
+		0479A47A2797338B0047D910 /* ProductV2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4792797338B0047D910 /* ProductV2TableViewCell.swift */; };
 		0488BEEC2793BE8D00A3FA9B /* SetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */; };
 		0488BEEF2793C01700A3FA9B /* ListProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */; };
 		0488BEF12793C95600A3FA9B /* UIGuideHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEF02793C95600A3FA9B /* UIGuideHelper.swift */; };
@@ -75,6 +76,7 @@
 		0479A4722796E04A0047D910 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		0479A474279703020047D910 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		0479A476279728030047D910 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		0479A4792797338B0047D910 /* ProductV2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductV2TableViewCell.swift; sourceTree = "<group>"; };
 		0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupUI.swift; sourceTree = "<group>"; };
 		0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductViewController.swift; sourceTree = "<group>"; };
 		0488BEF02793C95600A3FA9B /* UIGuideHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGuideHelper.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		040941CD27919FC0000C37E4 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				0479A4782797334B0047D910 /* ProductV2TableViewCell */,
 				0479A46C2796D9DC0047D910 /* ProductCollectionViewCell */,
 				0488BEFB2794277400A3FA9B /* ProductTableViewCell */,
 				040941CE2791A01B000C37E4 /* NavBar */,
@@ -232,6 +235,14 @@
 				0479A4722796E04A0047D910 /* PopUpViewController.swift */,
 			);
 			path = StageThreeViewController;
+			sourceTree = "<group>";
+		};
+		0479A4782797334B0047D910 /* ProductV2TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0479A4792797338B0047D910 /* ProductV2TableViewCell.swift */,
+			);
+			path = ProductV2TableViewCell;
 			sourceTree = "<group>";
 		};
 		0488BEEA2793BE7100A3FA9B /* ViewController */ = {
@@ -528,6 +539,7 @@
 				040941C72791464D000C37E4 /* Product.swift in Sources */,
 				813BAED42554E3220083B711 /* SceneDelegate.swift in Sources */,
 				0479A477279728030047D910 /* UIImageView.swift in Sources */,
+				0479A47A2797338B0047D910 /* ProductV2TableViewCell.swift in Sources */,
 				0488BEF12793C95600A3FA9B /* UIGuideHelper.swift in Sources */,
 				0479A4712796DF320047D910 /* StageThreeViewController.swift in Sources */,
 				0488BEF32793CCE000A3FA9B /* ListProductUIControll.swift in Sources */,
