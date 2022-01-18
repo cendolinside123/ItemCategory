@@ -17,6 +17,7 @@ class ListProductViewController: UIViewController {
     private var viewModel: ProductVMGuideline?
     private var listExpandProduxt: [[String: String]] = []
     private var productControll: ListProductHelperGuide?
+    var sendSelectedValue: ((Product) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -286,10 +287,12 @@ extension ListProductHelper: ListProductHelperGuide {
             }
         } else {
             
-            if type == .independent {
+            if type != .popup {
                 print("not reload")
-            } else if type == .popup {
-                
+            } else {
+                _controller.dismiss(animated: true, completion: {
+                    _controller.sendSelectedValue?(product)
+                })
             }
         }
     }
