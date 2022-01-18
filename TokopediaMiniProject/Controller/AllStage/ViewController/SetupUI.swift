@@ -17,6 +17,6 @@ enum VCType {
 protocol ListProductHelperGuide {
     func cellExpandValidation(listIndex: [Int], status: Bool, tableView: UITableView)
     func updateExpandValidation(product: [Product])
-    func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product) -> UITableViewCell
+    func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell
     func selectValidation(product: Product, type: VCType)
 }

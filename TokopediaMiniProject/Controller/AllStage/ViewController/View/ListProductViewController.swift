@@ -18,6 +18,7 @@ class ListProductViewController: UIViewController {
     private var listExpandProduxt: [[String: String]] = []
     private var productControll: ListProductHelperGuide?
     var sendSelectedValue: ((Product) -> Void)?
+    private var selectedText: String = ""
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -151,6 +152,7 @@ extension ListProductViewController {
     }
     
     func doSearchProduct(keyWord: String) {
+        selectedText = keyWord
         viewModel?.searchProduct(keyword: keyWord)
     }
     
@@ -191,7 +193,7 @@ extension ListProductViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let getProductInfo = viewModel?.result[indexPath.row], let typeVC = typeViewController {
-            return productControll?.cellDisplayControll(tableView: tableView, type: typeVC, indexPath: indexPath, product: getProductInfo) ?? UITableViewCell()
+            return productControll?.cellDisplayControll(tableView: tableView, type: typeVC, indexPath: indexPath, product: getProductInfo, selectedText: selectedText) ?? UITableViewCell()
         } else {
             return UITableViewCell()
         }
@@ -250,13 +252,13 @@ extension ListProductHelper: ListProductHelperGuide {
         }
     }
     
-    func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product) -> UITableViewCell {
+    func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
         cell.selectionStyle = .none
         
-        cell.setProductInfo(product: product)
+        cell.setProductInfo(product: product, searchText: selectedText)
         
         return cell
     }

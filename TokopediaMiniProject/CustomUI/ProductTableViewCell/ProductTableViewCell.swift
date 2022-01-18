@@ -162,6 +162,7 @@ extension ProductTableViewCell {
         lblNamaProduct.text = product.name
         lblJumlahChild.text = "\(product.child.count)"
         uiControll?.doValidation(product: product, childInfo: viewChildInfo, spaceLvOne: viewLevelOne, spaceLvTwo: viewLevelTwo)
+        uiControll?.boldSelectedText(product: product, labelName: lblNamaProduct, text: searchText)
         listChild = product.child
     }
 }

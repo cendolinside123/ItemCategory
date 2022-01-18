@@ -10,4 +10,5 @@ import UIKit
 
 protocol ProductTableHelper {
     func doValidation(product: Product, childInfo: UIView, spaceLvOne: UIView, spaceLvTwo: UIView)
+    func boldSelectedText(product: Product, labelName: UILabel, text: String)
 }
