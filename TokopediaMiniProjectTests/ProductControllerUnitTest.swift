@@ -98,4 +98,23 @@ class ProductControllerUnitTest: XCTestCase {
         wait(for: [filterExpectation], timeout: 1)
     }
     
+    func testAdvanceLoadData() {
+        let useCase: StageNetworkProvider = SpecialStageUseCase()
+        viewModel = ProductViewModel(useCase: useCase)
+        let loadExpectation = expectation(description: "should return product data")
+        
+        
+        viewModel?.productResult = { result in
+            XCTAssertGreaterThan(result.count, 0)
+            loadExpectation.fulfill()
+        }
+        
+        viewModel?.fetchError = { error in
+            XCTAssertThrowsError(error.localizedDescription)
+        }
+        
+        viewModel?.loadProduct(reloadTime: 3)
+        wait(for: [loadExpectation], timeout: 10)
+    }
+    
 }
