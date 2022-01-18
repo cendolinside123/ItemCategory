@@ -91,8 +91,8 @@ class ProductTableViewCell: UITableViewCell {
         //MARK: viewLevelOne and viewLevelTwo constrains
         viewLevelOne.translatesAutoresizingMaskIntoConstraints = false
         viewLevelTwo.translatesAutoresizingMaskIntoConstraints = false
-        constraints += [NSLayoutConstraint(item: viewLevelOne, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 12)]
-        constraints += [NSLayoutConstraint(item: viewLevelTwo, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 12)]
+        constraints += [NSLayoutConstraint(item: viewLevelOne, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)]
+        constraints += [NSLayoutConstraint(item: viewLevelTwo, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)]
         
         //MARK: childInfoStackView constraints
         childInfoStackView.translatesAutoresizingMaskIntoConstraints = false
