@@ -10,6 +10,7 @@ import UIKit
 class SearchBar: UIView {
     private let searchBox = UITextField()
     private let contentView = UIView()
+    private let buttonClear = UIButton()
     var searchText: ((String) -> Void)?
     /*
     // Only override draw() if you perform custom drawing.
@@ -33,6 +34,7 @@ class SearchBar: UIView {
         addLayouts()
         addContentView()
         addConstraints()
+        setupButton()
     }
     
     private func addLayouts() {
@@ -41,10 +43,11 @@ class SearchBar: UIView {
         self.layer.borderWidth = 1
         addContentView()
         addSearchBox()
+        addButtonClear()
     }
     
     private func addConstraints() {
-        let views: [String: Any] = ["contentView": contentView, "searchBox": searchBox]
+        let views: [String: Any] = ["contentView": contentView, "searchBox": searchBox, "buttonClear": buttonClear]
         let matrix: [String: Any] = [:]
         var constraints = [NSLayoutConstraint]()
         
@@ -62,6 +65,16 @@ class SearchBar: UIView {
         constraints += NSLayoutConstraint.constraints(withVisualFormat: hSearchBox, options: .alignAllCenterY, metrics: matrix, views: views)
         constraints += NSLayoutConstraint.constraints(withVisualFormat: vSearchBox, options: .alignAllCenterX, metrics: matrix, views: views)
         
+        //MARK: buttonClear constraints
+        buttonClear.translatesAutoresizingMaskIntoConstraints = false
+        constraints += [NSLayoutConstraint(item: buttonClear, attribute: .trailing, relatedBy: .equal, toItem: searchBox, attribute: .trailing, multiplier: 1, constant: -3)]
+        constraints += [NSLayoutConstraint(item: buttonClear, attribute: .top, relatedBy: .equal, toItem: searchBox, attribute: .top, multiplier: 1, constant: 5)]
+        constraints += [NSLayoutConstraint(item: buttonClear, attribute: .bottom, relatedBy: .equal, toItem: searchBox, attribute: .bottom, multiplier: 1, constant: -3)]
+        constraints += [NSLayoutConstraint(item: buttonClear, attribute: .width, relatedBy: .equal, toItem: searchBox, attribute: .width, multiplier: 1/9, constant: 0)]
+        buttonClear.layoutIfNeeded()
+        buttonClear.clipsToBounds = true
+        buttonClear.layer.cornerRadius = buttonClear.bounds.width / 2
+        
         NSLayoutConstraint.activate(constraints)
     }
     
@@ -72,7 +85,6 @@ class SearchBar: UIView {
     
     private func addSearchBox() {
         contentView.addSubview(searchBox)
-        searchBox.clearButtonMode = .always
         searchBox.attributedPlaceholder = NSAttributedString(string: "Search Product", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         searchBox.backgroundColor = .white
         searchBox.layer.borderColor = UIColor.black.cgColor
@@ -83,6 +95,15 @@ class SearchBar: UIView {
         searchBox.delegate = self
     }
 
+    
+    private func addButtonClear() {
+        buttonClear.setTitle("x", for: .normal)
+        buttonClear.backgroundColor = .darkGray
+        buttonClear.setTitleColor(.white, for: .normal)
+        buttonClear.isHidden = true
+        contentView.addSubview(buttonClear)
+    }
+    
 }
 extension SearchBar {
     func setBorderColor(color: UIColor) {
@@ -92,12 +113,30 @@ extension SearchBar {
     func setBorderWidth(width: CGFloat) {
         self.layer.borderWidth = width
     }
+    
+    private func setupButton() {
+        buttonClear.addTarget(self, action: #selector(clearText), for: .touchDown)
+    }
+    
+    @objc private func clearText() {
+        searchText?("")
+        searchBox.text = ""
+        buttonClear.isHidden = true
+    }
 }
 
 extension SearchBar: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == searchBox {
-            searchText?(textField.text ?? "")
+            
+            if searchBox.text != nil && searchBox.text != "" {
+                buttonClear.isHidden = false
+                searchText?(searchBox.text ?? "")
+            } else {
+                searchText?("")
+                buttonClear.isHidden = true
+            }
+            
         }
     }
     
