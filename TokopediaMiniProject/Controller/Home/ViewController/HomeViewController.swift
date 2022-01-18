@@ -150,9 +150,15 @@ extension HomeViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc private func toStageThree() {
+        let vc = StageThreeViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func setupButton() {
         secondStage.addTarget(self, action: #selector(toStageTwo), for: .touchDown)
         firstStage.addTarget(self, action: #selector(toStageOne), for: .touchDown)
+        thirdStage.addTarget(self, action: #selector(toStageThree), for: .touchDown)
     }
     
 }
