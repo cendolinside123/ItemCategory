@@ -15,19 +15,24 @@ class ProductCellControll {
 }
 extension ProductCellControll: ProductTableHelper {
     func boldSelectedText(product: Product, labelName: UILabel, text: String) {
-        if product.name.contains(text) {
+        if product.name.lowercased().contains(text.lowercased()) {
             
             let attrs = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: labelName.font.pointSize)]
-            let boldText = NSMutableAttributedString(string: text, attributes:attrs)
             var getText = NSMutableAttributedString(string: "", attributes: [:])
             var tempText: String = ""
             
             for aLetters in Array(product.name) {
                 tempText += "\(aLetters)"
-                if tempText.contains(text) {
-                    tempText = tempText.replacingOccurrences(of: text, with: "")
+                if tempText.lowercased().contains(text.lowercased()) {
+                    tempText = tempText.lowercased().replacingOccurrences(of: text.lowercased(), with: "")
                     getText = NSMutableAttributedString(string: tempText, attributes: [:])
-                    getText.append(boldText)
+                    if tempText.count == 0 || tempText.last == " " {
+                        let boldText = NSMutableAttributedString(string: text.firstUppercased(), attributes:attrs)
+                        getText.append(boldText)
+                    } else {
+                        let boldText = NSMutableAttributedString(string: text.lowercased(), attributes:attrs)
+                        getText.append(boldText)
+                    }
                 } else {
                     getText.append(NSMutableAttributedString(string: "\(aLetters)", attributes: [:]))
                 }

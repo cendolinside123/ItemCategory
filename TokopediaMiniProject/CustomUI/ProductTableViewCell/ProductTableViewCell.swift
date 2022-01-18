@@ -159,10 +159,13 @@ class ProductTableViewCell: UITableViewCell {
 
 extension ProductTableViewCell {
     func setProductInfo(product: Product, searchText: String = "") {
+        lblNamaProduct.attributedText = nil
         lblNamaProduct.text = product.name
         lblJumlahChild.text = "\(product.child.count)"
         uiControll?.doValidation(product: product, childInfo: viewChildInfo, spaceLvOne: viewLevelOne, spaceLvTwo: viewLevelTwo)
-        uiControll?.boldSelectedText(product: product, labelName: lblNamaProduct, text: searchText)
+        if searchText != "" {
+            uiControll?.boldSelectedText(product: product, labelName: lblNamaProduct, text: searchText)
+        }
         listChild = product.child
     }
 }
