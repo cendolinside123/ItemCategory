@@ -191,8 +191,11 @@ extension ProductViewModel: ProductVMGuideline {
     
     func searchProduct(keyword: String, type: VCType) {
         if keyword == "" {
-            self.result = self.tempProduct
-            self.tempProduct = []
+            if tempProduct.count != 0 {
+                self.result = self.tempProduct
+                self.tempProduct = []
+            }
+            
             self.productResult?(self.result)
             return
         }
