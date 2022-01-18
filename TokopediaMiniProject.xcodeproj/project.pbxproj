@@ -23,6 +23,7 @@
 		0479A46E2796DE080047D910 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A46D2796DE080047D910 /* ProductCollectionViewCell.swift */; };
 		0479A4712796DF320047D910 /* StageThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4702796DF320047D910 /* StageThreeViewController.swift */; };
 		0479A4732796E04A0047D910 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4722796E04A0047D910 /* PopUpViewController.swift */; };
+		0479A475279703020047D910 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A474279703020047D910 /* StringHelper.swift */; };
 		0488BEEC2793BE8D00A3FA9B /* SetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */; };
 		0488BEEF2793C01700A3FA9B /* ListProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */; };
 		0488BEF12793C95600A3FA9B /* UIGuideHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BEF02793C95600A3FA9B /* UIGuideHelper.swift */; };
@@ -71,6 +72,7 @@
 		0479A46D2796DE080047D910 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		0479A4702796DF320047D910 /* StageThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageThreeViewController.swift; sourceTree = "<group>"; };
 		0479A4722796E04A0047D910 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		0479A474279703020047D910 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		0488BEEB2793BE8D00A3FA9B /* SetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupUI.swift; sourceTree = "<group>"; };
 		0488BEEE2793C01700A3FA9B /* ListProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductViewController.swift; sourceTree = "<group>"; };
 		0488BEF02793C95600A3FA9B /* UIGuideHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGuideHelper.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				0488BEF02793C95600A3FA9B /* UIGuideHelper.swift */,
 				040941C327913023000C37E4 /* NetworkResult.swift */,
 				040941D92791D223000C37E4 /* Constant.swift */,
+				0479A474279703020047D910 /* StringHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				040941D82791CC23000C37E4 /* SpecialStageUseCase.swift in Sources */,
 				040941DD2791D5E3000C37E4 /* ProductVMGuideline.swift in Sources */,
 				040941D02791A041000C37E4 /* DefaultNavBar.swift in Sources */,
+				0479A475279703020047D910 /* StringHelper.swift in Sources */,
 				040941D62791C330000C37E4 /* BasicStageUseCase.swift in Sources */,
 				04F972BF2795D90200CBE267 /* StageOneViewController.swift in Sources */,
 				813BAED62554E3220083B711 /* ViewController.swift in Sources */,
