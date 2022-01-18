@@ -48,8 +48,15 @@ class StageTwoViewController: UIViewController {
     }
     */
     
-    override func viewWillLayoutSubviews() {
-        //MARK: mau buat proses detect screen orientation
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if UIDevice.current.orientation.isLandscape {
+            print("Landscape")
+            updateLandscapeNavbar()
+        } else {
+            print("Portrait")
+            updatePotraitNavBar()
+        }
     }
     
     private func bind() {
@@ -84,7 +91,9 @@ class StageTwoViewController: UIViewController {
         constraints += NSLayoutConstraint.constraints(withVisualFormat: vNavBarStackEmptyContent, options: .alignAllLeading, metrics: matrix, views: views)
         constraints += NSLayoutConstraint.constraints(withVisualFormat: hNavBarStack, options: .alignAllTop, metrics: matrix, views: views)
         constraints += NSLayoutConstraint.constraints(withVisualFormat: hEmptyContent, options: .alignAllTop, metrics: matrix, views: views)
-        constraints += [NSLayoutConstraint(item: navBarStackView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1/9, constant: 0)]
+        let navBarHeighConstraint = NSLayoutConstraint(item: navBarStackView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1/9, constant: 0)
+        navBarHeighConstraint.identifier = "navBarHeighConstraint"
+        constraints += [navBarHeighConstraint]
         
         //MARK: navBar constraints
         navBar.translatesAutoresizingMaskIntoConstraints = false
@@ -147,5 +156,37 @@ class StageTwoViewController: UIViewController {
 extension StageTwoViewController {
     private func searchKeyword(keyword: String) {
         (productVC as? ListProductViewController)?.doSearchProduct(keyWord: keyword)
+    }
+    
+    private func updateLandscapeNavbar() {
+        var constraint = view.constraints
+        
+        guard let getNavbarHeigh = constraint.firstIndex(where: { (constraint) -> Bool in
+            constraint.identifier == "navBarHeighConstraint"
+        }) else {
+            return
+        }
+        NSLayoutConstraint.deactivate(constraint)
+        
+        let newNavbarHeigh = NSLayoutConstraint(item: navBarStackView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 2/9, constant: 0)
+        newNavbarHeigh.identifier = "navBarHeighConstraint"
+        constraint[getNavbarHeigh] = newNavbarHeigh
+        NSLayoutConstraint.activate(constraint)
+    }
+    
+    private func updatePotraitNavBar() {
+        var constraint = view.constraints
+        
+        guard let getNavbarHeigh = constraint.firstIndex(where: { (constraint) -> Bool in
+            constraint.identifier == "navBarHeighConstraint"
+        }) else {
+            return
+        }
+        NSLayoutConstraint.deactivate(constraint)
+        
+        let newNavbarHeigh = NSLayoutConstraint(item: navBarStackView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1/9, constant: 0)
+        newNavbarHeigh.identifier = "navBarHeighConstraint"
+        constraint[getNavbarHeigh] = newNavbarHeigh
+        NSLayoutConstraint.activate(constraint)
     }
 }
