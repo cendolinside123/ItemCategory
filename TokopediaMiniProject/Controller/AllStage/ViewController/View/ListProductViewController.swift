@@ -133,6 +133,7 @@ class ListProductViewController: UIViewController {
         tableContent.delegate = self
         tableContent.dataSource = self
         tableContent.register(ProductTableViewCell.self, forCellReuseIdentifier: "ProductCell")
+        tableContent.register(ProductV2TableViewCell.self, forCellReuseIdentifier: "ProductV2Cell")
         tableContent.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableContent.tableFooterView = UIView()
     }
@@ -226,7 +227,13 @@ extension ListProductHelper: ListProductHelperGuide {
     func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
         
         if type == .independentV2 && product.level == 2 {
-            return UITableViewCell()
+//            return UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductV2Cell", for: indexPath) as? ProductV2TableViewCell else {
+                return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            cell.setupData(dummyProduct: product)
+            return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
                 return UITableViewCell()
