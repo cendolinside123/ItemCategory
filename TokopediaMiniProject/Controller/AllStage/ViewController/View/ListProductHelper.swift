@@ -47,7 +47,6 @@ extension ListProductHelper: ListProductHelperGuide {
     func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
         
         if type == .independentV2 && product.level == 2 {
-//            return UITableViewCell()
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductV2Cell", for: indexPath) as? ProductV2TableViewCell else {
                 return UITableViewCell()
             }
