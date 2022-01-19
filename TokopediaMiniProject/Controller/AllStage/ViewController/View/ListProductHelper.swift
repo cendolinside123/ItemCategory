@@ -38,7 +38,7 @@ extension ListProductHelper: ListProductHelperGuide {
                 return IndexPath(row: getIndex, section: 0)
             })
             tableView.beginUpdates()
-            tableView.deleteRows(at: getlListIndex, with: .automatic)
+            tableView.deleteRows(at: getlListIndex, with: .fade)
             tableView.endUpdates()
         }
         
