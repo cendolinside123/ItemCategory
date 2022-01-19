@@ -10,7 +10,7 @@ import UIKit
 
 
 class ListProductUIControll {
-    private var controller: UIViewController?
+    private weak var controller: UIViewController?
     
     init(controller: UIViewController) {
         self.controller = controller
