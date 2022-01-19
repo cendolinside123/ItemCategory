@@ -16,7 +16,7 @@ class ListProductViewController: UIViewController {
     private var uiControll: ListUIGuideHelper?
     private var viewModel: ProductVMGuideline?
     private var productControll: ListProductHelperGuide?
-    var sendSelectedValue: ((Product) -> Void)?
+    public var sendSelectedValue: ((Product) -> Void)?
     private var selectedText: String = ""
     
     required init?(coder aDecoder: NSCoder) {

@@ -16,7 +16,7 @@ struct SpecialStageUseCase {
 extension SpecialStageUseCase: StageNetworkProvider {
     
     
-    func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
+    public func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
         DispatchQueue.global().async {
             AF.request(Constant.APIProduct, method: .get, parameters: Optional<String>.none, encoder: URLEncodedFormParameterEncoder.default, headers: nil, interceptor: nil, requestModifier: nil).responseJSON(completionHandler:  { response in
                 switch response.result {

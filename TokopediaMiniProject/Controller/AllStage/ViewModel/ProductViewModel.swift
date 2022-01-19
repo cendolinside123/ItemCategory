@@ -8,12 +8,12 @@
 import Foundation
 
 class ProductViewModel {
-    var productResult: (([Product]) -> Void)?
-    var filterResult: (([Product]) -> Void)?
-    var toggleResult: (([Int], Bool) -> Void)? //note: how to use, #1 param list of index 2# if false mean delete true mean adding
-    var fetchError: ((Error) -> Void)?
-    var sendaProduct: ((Product) -> Void)?
-    var result: [Product] = []
+    public var productResult: (([Product]) -> Void)?
+    public var filterResult: (([Product]) -> Void)?
+    public var toggleResult: (([Int], Bool) -> Void)? //note: how to use, #1 param list of index 2# if false mean delete true mean adding
+    public var fetchError: ((Error) -> Void)?
+    public var sendaProduct: ((Product) -> Void)?
+    public var result: [Product] = []
     private var tempProduct: [Product] = []
     private var listExpandProduxt: [[String: String]] = []
     

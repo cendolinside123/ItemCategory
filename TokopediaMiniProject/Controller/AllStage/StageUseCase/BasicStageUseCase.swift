@@ -14,7 +14,7 @@ struct BasicStageUseCase {
 }
 
 extension BasicStageUseCase: StageNetworkProvider {
-    func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
+    public func fetchProduct(completion: @escaping (NetworkResult<[Product]>) -> Void) {
         
         
         guard let url = Bundle.main.path(forResource: "data", ofType: "json") else {
