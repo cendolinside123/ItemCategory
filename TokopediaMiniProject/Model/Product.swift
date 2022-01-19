@@ -55,11 +55,13 @@ extension Product {
         self.root = root
         var childProduct = [Product]()
         for product in aJson["child"].arrayValue {
-            childProduct.append(Product(json: product, level: level + 1, root: self.root == "" ? id : self.root))
+            childProduct.append(Product(aJson: product, level: level + 1, root: self.root == "" ? id : self.root))
         }
         child = childProduct
         
     }
+    
+    
     
     // MARK: please don't use this init for prod, I use it for setup Mockup data
     init(id: String, name: String, identifier: String, url: String, iconImageUrl: String,
