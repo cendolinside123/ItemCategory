@@ -13,7 +13,7 @@ import Kingfisher
 extension UIImageView {
     func setImage(url: String, times: Int = 3) {
         
-        image = nil
+        image = #imageLiteral(resourceName: "shop")
         
         guard let getURL = URL(string: url) else {
             return
