@@ -13,7 +13,7 @@ struct ListProductHelper {
 }
 
 extension ListProductHelper: ListProductHelperGuide {
-    func cellHighControll(type: VCType, product: Product) -> CGFloat {
+    public func cellHighControll(type: VCType, product: Product) -> CGFloat {
         if type == .independentV2 && product.level == 2 {
             return 150
         } else {
@@ -22,7 +22,7 @@ extension ListProductHelper: ListProductHelperGuide {
     }
     
     
-    func cellExpandValidation(listIndex: [Int], status: Bool, tableView: UITableView) {
+    public func cellExpandValidation(listIndex: [Int], status: Bool, tableView: UITableView) {
         
         var getlListIndex: [IndexPath] = []
         if status == true {
@@ -44,7 +44,7 @@ extension ListProductHelper: ListProductHelperGuide {
         
     }
     
-    func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
+    public func cellDisplayControll(tableView: UITableView, type: VCType, indexPath: IndexPath, product: Product, selectedText: String) -> UITableViewCell {
         
         if type == .independentV2 && product.level == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductV2Cell", for: indexPath) as? ProductV2TableViewCell else {

@@ -141,15 +141,15 @@ class ListProductViewController: UIViewController {
 }
 extension ListProductViewController {
     
-    func getLoadingView() -> UIView {
+    public func getLoadingView() -> UIView {
         return loadingView
     }
     
-    func getLoadingSpinner() -> UIActivityIndicatorView {
+    public func getLoadingSpinner() -> UIActivityIndicatorView {
         return loadingSpinner
     }
     
-    func doSearchProduct(keyWord: String) {
+    public func doSearchProduct(keyWord: String) {
         selectedText = keyWord
         if let getType = self.typeViewController {
             viewModel?.searchProduct(keyword: keyWord, type: getType)

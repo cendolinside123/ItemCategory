@@ -18,7 +18,7 @@ class ListProductUIControll {
     
 }
 extension ListProductUIControll: ListUIGuideHelper {
-    func showLoading(completion: (() -> Void)?) {
+    public func showLoading(completion: (() -> Void)?) {
         guard let _controller = self.controller as? ListProductViewController else {
             return
         }
@@ -43,7 +43,7 @@ extension ListProductUIControll: ListUIGuideHelper {
         })
     }
     
-    func hideLoading(completion: (() -> Void)?) {
+    public func hideLoading(completion: (() -> Void)?) {
         guard let _controller = self.controller as? ListProductViewController else {
             return
         }
@@ -68,7 +68,7 @@ extension ListProductUIControll: ListUIGuideHelper {
         })
     }
     
-    func scrollControll(scrollView: UIScrollView, completion: (() -> Void)?) {
+    public func scrollControll(scrollView: UIScrollView, completion: (() -> Void)?) {
         
     }
     

@@ -89,7 +89,7 @@ extension ProductViewModel {
         return getResult
     }
     
-    func expandInependV2(product: Product) {
+    private func expandInependV2(product: Product) {
         if self.tempProduct.count == 0 {
             self.tempProduct = self.result
         }
@@ -105,7 +105,7 @@ extension ProductViewModel {
         }
     }
     
-    func hideInependV2(product: Product) {
+    private func hideInependV2(product: Product) {
         
         var listIndex: [Int] = []
         
@@ -119,7 +119,7 @@ extension ProductViewModel {
 }
 
 extension ProductViewModel: ProductVMGuideline {
-    func hideSpesificProduct(child: [Product]) {
+    public func hideSpesificProduct(child: [Product]) {
         var listIndex: [Int] = []
         
         for getProduct in child {
@@ -136,7 +136,7 @@ extension ProductViewModel: ProductVMGuideline {
         self.toggleResult?(listIndex, false)
     }
     
-    func expandProduct(child: [Product]) {
+    public func expandProduct(child: [Product]) {
         if self.tempProduct.count == 0 {
             self.tempProduct = self.result
         }
@@ -154,7 +154,7 @@ extension ProductViewModel: ProductVMGuideline {
         
     }
     
-    func hideAllProduct(id: String) {
+    public func hideAllProduct(id: String) {
         
         let getAllRemovedChild = self.result.filter({
             $0.root == id
@@ -172,7 +172,7 @@ extension ProductViewModel: ProductVMGuideline {
         }
     }
     
-    func loadProduct(reloadTime: Int) {
+    public func loadProduct(reloadTime: Int) {
         useCase.fetchProduct(completion: { [weak self] response in
             switch response {
             case .success(let result):
@@ -189,7 +189,7 @@ extension ProductViewModel: ProductVMGuideline {
         })
     }
     
-    func searchProduct(keyword: String, type: VCType) {
+    public func searchProduct(keyword: String, type: VCType) {
         if keyword == "" {
             if tempProduct.count != 0 {
                 self.result = self.tempProduct
@@ -221,7 +221,7 @@ extension ProductViewModel: ProductVMGuideline {
     }
     
     
-    func selectExpandProduct(product: Product, type: VCType) {
+    public func selectExpandProduct(product: Product, type: VCType) {
         if product.child.count != 0 {
             if listExpandProduxt.firstIndex(where: { $0["id"] == product.id && $0["root"] == product.root }) == nil {
                 if type != .independentV2 {
