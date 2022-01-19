@@ -16,6 +16,10 @@ class ListProductUIControll {
         self.controller = controller
     }
     
+    deinit {
+        print("controller is deinit \(controller)")
+    }
+    
 }
 extension ListProductUIControll: ListUIGuideHelper {
     public func showLoading(completion: (() -> Void)?) {
